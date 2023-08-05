@@ -109,7 +109,14 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
       <div className="drawer-side">
         <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 h-full bg-sandstone">
-          <Link href="/">
+          <Link
+            href="/"
+            onClick={() => {
+              (
+                document.querySelector("#my-drawer-3") as HTMLInputElement
+              ).checked = false;
+            }}
+          >
             <a className="normal-case p-4">
               <img
                 src={logo}
@@ -125,7 +132,7 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
             { text: "guilds" },
             { text: "profile", href: `/${currentUser.id}` },
             { text: "logout", onClick: () => removeCurrentUser() },
-          ].map(({ text, href, ...args }) => {
+          ].map(({ text, href, onClick, ...args }) => {
             const item = (
               <a
                 style={{ color: "#ffffff", ...anotherDodgyAsFuckCssOverride }}
@@ -136,7 +143,15 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
             );
 
             return (
-              <li key={text}>
+              <li
+                onClick={() => {
+                  (
+                    document.querySelector("#my-drawer-3") as HTMLInputElement
+                  ).checked = false;
+                  onClick?.();
+                }}
+                key={text}
+              >
                 {href ? <Link href={href}>{item}</Link> : item}
               </li>
             );
