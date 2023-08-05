@@ -13,7 +13,7 @@ const User: React.FC<UserProps> = ({ userId }) => {
   if (!user) return <h1>User not found</h1>;
 
   return (
-    <div className="container mx-auto p-3 grid gap-x-6 gap-y-2 grid-cols-12">
+    <div className="container mx-auto p-3 grid gap-x-3 gap-y-2 grid-cols-12">
       <UserHeader user={user} />
 
       <UserFamily user={user} />
