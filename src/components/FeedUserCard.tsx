@@ -33,9 +33,7 @@ const FeedUserCard: React.FC<FeedUserCardProps> = ({ user }) => {
               {user.name}
             </h2>
 
-            <span className="text-xs">
-              Queen consort of King Louis XVI @ France | Ex-Archduchess
-            </span>
+            <span className="text-xs">{user.occupation}</span>
           </div>
 
           <div className="font-display text-2xl">
