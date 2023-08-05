@@ -1,10 +1,10 @@
+import maCover from "@/assets/images/ma-cover.jpg";
 import {
-  UserOpenToEnum,
+  UserOpenTo,
   UserSocialClass,
   UserUpperClassRole,
   addUser,
 } from "@/stores/user";
-import maCover from "@/assets/images/ma-cover.jpg";
 import { toDataUrl } from "@/utils";
 
 export const generateUsers = async () => {
@@ -17,6 +17,6 @@ export const generateUsers = async () => {
     bio: "Bow down to me, peasants!",
     socialClass: UserSocialClass.UPPER,
     role: UserUpperClassRole.MONARCH,
-    openTo: [UserOpenToEnum.MARRIAGE, UserOpenToEnum.MISTRESS],
+    openTo: [UserOpenTo.MARRIAGE, UserOpenTo.MISTRESS],
   });
 };
