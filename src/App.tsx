@@ -1,11 +1,17 @@
-import Navbar from "./components/Navbar";
+import { Route } from "wouter";
+import Navbar from "@/components/Navbar";
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <>
       <Navbar />
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <button className="btn btn-primary">Button</button>
+      <Route path="/">
+        <h1>Home</h1>
+      </Route>
+
+      <Route path="/:userId">
+        <h1>User page</h1>
+      </Route>
     </>
   );
 };
