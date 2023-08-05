@@ -12,7 +12,7 @@ export const users: User[] = [
   {
     id: "1",
     name: "Marie Antoinette",
-    immediateFamilyUserIds: [],
+    immediateFamilyUserIds: ["2"],
     occupation: "Queen consort of King Louis XVI of France | Ex-Archduchess",
     isMale: false,
     profileImage: await toDataUrl(maProfile),

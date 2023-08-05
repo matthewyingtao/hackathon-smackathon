@@ -37,7 +37,14 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
         </div>
 
         <div className="mb-4">
-          <div className="font-display text-2xl">500+ fellowships</div>
+          <div className="font-display text-2xl">
+            { 
+              user.immediateFamilyUserIds.length.toPrecision(1) + 
+              (user.immediateFamilyUserIds.length === parseInt(user.immediateFamilyUserIds.length.toPrecision(1)) 
+              ? " fellowships" 
+              : "+ fellowships")
+            } 
+          </div>
           <div className="font-display">
             Louis XVI, Phillipe I and 2 other mutual fellowships
           </div>
