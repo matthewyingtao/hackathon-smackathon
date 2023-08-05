@@ -1,4 +1,4 @@
-import UserHeader from "@/components/UserHeader";
+import UserBio from "@/components/UserBio";
 import { getUser } from "@/stores/user";
 
 interface UserProps {
@@ -12,7 +12,7 @@ const User: React.FC<UserProps> = ({ userId }) => {
 
   return (
     <>
-      <UserHeader user={user} />
+      <UserBio user={user} />
     </>
   );
 };

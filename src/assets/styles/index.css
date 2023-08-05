@@ -79,10 +79,10 @@
 
 @font-face {
   font-display: swap;
-  font-family: "Imperial Script";
+  font-family: "Charm";
   font-style: normal;
   font-weight: 400;
-  src: url("@/assets/fonts/imperial-script-v3-latin_latin-ext-regular.woff2")
+  src: url("@/assets/fonts/charm-v11-latin_latin-ext-regular.woff2")
     format("woff2");
 }
 
