@@ -4,7 +4,6 @@ import { v4 as uuid } from "uuid";
 export type Post = {
   id: string;
   userId: string;
-  title: string;
   body: string;
   createdAt: Date;
 };
