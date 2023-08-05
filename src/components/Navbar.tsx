@@ -10,13 +10,13 @@ const Navbar: React.FC = () => {
         </a>
 
         <div className="form-control flex flex-row relative">
-          <div className="-mr-8 px-2 absolute h-full">
+          <div className="-mr-8 px-4 absolute h-full">
             <FaMagnifyingGlass className="h-full" />
           </div>
 
           <input
             type="text"
-            className="input input-bordered w-24 md:w-auto border-muted-gold pl-8"
+            className="input input-bordered w-24 md:w-auto border-muted-gold pl-10 rounded-3xl"
             style={{
               background: "linear-gradient(to bottom, #bdb096, #7D7463)",
             }}
