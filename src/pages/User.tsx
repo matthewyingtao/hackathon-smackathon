@@ -1,4 +1,4 @@
-import UserHeader from "@/components/UserHeader";
+import UserBio from "@/components/UserBio";
 import { getUser } from "@/stores/user";
 
 interface UserProps {
@@ -11,9 +11,9 @@ const User: React.FC<UserProps> = ({ userId }) => {
   if (!user) return <h1>User not found</h1>;
 
   return (
-    <>
-      <UserHeader user={user} />
-    </>
+    <div className="container mx-auto p-3">
+      <UserBio user={user} />
+    </div>
   );
 };
 
