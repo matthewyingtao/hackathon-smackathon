@@ -128,7 +128,7 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
         </div>
         {children}
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side z-20">
         <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 h-full bg-sandstone">
           <Link
