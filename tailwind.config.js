@@ -14,6 +14,7 @@ export default {
       "dark-sandstone": "#8F7A54",
       "muted-gold": "#7D7463",
       "woman-pink": "#ff91af",
+      "another-colour-name": "#8F7661",
       white: "#FFFFFF",
     },
   },

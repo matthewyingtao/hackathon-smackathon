@@ -1,3 +1,4 @@
+import { useStore } from "@nanostores/react";
 import { atom } from "nanostores";
 
 export interface UserImmediateFamily {
@@ -79,8 +80,26 @@ export const removeUser = (id: string) =>
 export const getUser = (id: string) =>
   $users.get().find((user) => user.id === id);
 
-export const $currentUser = atom<string | null>(null);
+export const useUser = (id: string) => {
+  const users = useStore($users);
 
-export const setCurrentUser = (id: string) => $currentUser.set(id);
+  return users.find((user) => user.id === id);
+};
 
-export const removeCurrentUser = () => $currentUser.set(null);
+export const updateUser = (id: string, user: Partial<User>) =>
+  $users.set(
+    $users.get().map((u) =>
+      u.id === id
+        ? ({
+            ...u,
+            ...user,
+          } as User)
+        : u,
+    ),
+  );
+
+export const $currentUserId = atom<string | null>(null);
+
+export const setCurrentUser = (id: string) => $currentUserId.set(id);
+
+export const removeCurrentUser = () => $currentUserId.set(null);

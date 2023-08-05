@@ -3,7 +3,7 @@ import { FaMagnifyingGlass, FaBars } from "react-icons/fa6";
 import logo from "@/assets/images/logo.svg";
 import { Link } from "wouter";
 import UserPicture from "./UserPicture";
-import { $currentUser, getUser, removeCurrentUser } from "@/stores/user";
+import { $currentUserId, getUser, removeCurrentUser } from "@/stores/user";
 import { useStore } from "@nanostores/react";
 
 const dodgyAsFuckCssOverride = {
@@ -17,7 +17,7 @@ const anotherDodgyAsFuckCssOverride = {
 } as React.CSSProperties;
 
 const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
-  const currentUserId = useStore($currentUser)!;
+  const currentUserId = useStore($currentUserId)!;
   const currentUser = getUser(currentUserId)!;
 
   return (

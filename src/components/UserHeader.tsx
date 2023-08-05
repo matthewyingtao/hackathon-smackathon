@@ -1,4 +1,4 @@
-import { $currentUser, User, getUser } from "@/stores/user";
+import { $currentUserId, User, getUser } from "@/stores/user";
 import UserPicture from "./UserPicture";
 import { displayFellowships } from "@/utils";
 import { useStore } from "@nanostores/react";
@@ -10,7 +10,7 @@ interface UserHeaderProps {
 const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
   const familyUserIds = new Set(user.immediateFamily.map((obj) => obj.userId));
 
-  const currrentUserId = useStore($currentUser)!;
+  const currrentUserId = useStore($currentUserId)!;
   const isCurrentUser = currrentUserId === user.id;
 
   return (

@@ -3,12 +3,12 @@ import Login from "@/components/Login";
 import Navbar from "@/components/Navbar";
 import User from "@/pages/User";
 import { useStore } from "@nanostores/react";
-import { $currentUser } from "@/stores/user";
+import { $currentUserId } from "@/stores/user";
 import Feed from "@/pages/Feed";
 import Guild from "@/pages/Guild";
 
 const App: React.FC = () => {
-  const currentUser = useStore($currentUser);
+  const currentUser = useStore($currentUserId);
 
   return (
     <div className="font-body bg-muted-gold min-h-screen">
