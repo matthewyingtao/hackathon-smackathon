@@ -2,20 +2,35 @@ import { Guild, getGuild } from "@/stores/guilds";
 import { FaArrowDown } from "react-icons/fa6";
 import guildCover from "@/assets/images/guild-cover.png";
 import logo from "@/assets/images/logo.svg";
+import { useEffect, useState } from "react";
 
 interface GuildProps {
   guildId?: string;
 }
 
 const GuildPage: React.FC<GuildProps> = ({ guildId }) => {
+  const [isLarge, setIsLarge] = useState(false);
+
   let guild: Guild | undefined = undefined;
   if (guildId) guild = getGuild(guildId);
 
+  useEffect(() => {
+    const resizeHandler = () => setIsLarge(window.innerWidth >= 1024);
+    window.addEventListener("resize", resizeHandler);
+
+    resizeHandler();
+
+    return () => {
+      window.removeEventListener("resize", resizeHandler);
+    };
+  }, []);
+
   return (
     <div
-      className="min-h-screen -mt-16 flex items-center justify-center flex-col bg-cover bg-center"
+      className="flex min-h-screen items-center justify-center flex-col bg-cover bg-center"
       style={{
         backgroundImage: `url(${guildCover})`,
+        marginTop: isLarge ? "-76px" : "-64px",
       }}
     >
       <div className="container mx-auto text-white text-center grow flex flex-col justify-center p-3">
