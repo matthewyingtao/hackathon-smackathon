@@ -7,6 +7,10 @@ interface UserHeaderProps {
 }
 
 const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
+  const mockUserIds = new Set(
+    mockUser.immediateFamily.map((obj) => obj.userId),
+  );
+
   return (
     <div className="card w-full bg-sandstone shadow-xl">
       <figure className="h-48">
@@ -35,9 +39,9 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
         </div>
         <div className="mb-4">
           <div className="font-display text-2xl">
-            {user.immediateFamilyUserIds.length.toPrecision(1) +
-              (user.immediateFamilyUserIds.length ===
-              parseInt(user.immediateFamilyUserIds.length.toPrecision(1))
+            {user.immediateFamily.length.toPrecision(1) +
+              (user.immediateFamily.length ===
+              parseInt(user.immediateFamily.length.toPrecision(1))
                 ? " fellowships"
                 : "+ fellowships")}
           </div>
@@ -45,9 +49,9 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
             {(() => {
               let a: string = "";
 
-              const sharedUsers: User[] = user.immediateFamilyUserIds
-                .filter((id) => mockUser.immediateFamilyUserIds.includes(id))
-                .map((id) => getUser(id))
+              const sharedUsers: User[] = user.immediateFamily
+                .filter(({ userId }) => mockUserIds.has(userId))
+                .map(({ userId }) => getUser(userId))
                 .filter(
                   (user) => user !== null && user !== undefined,
                 ) as User[];
@@ -62,7 +66,8 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
                 a += sharedUsers[0].name;
               }
               if (connections > 1) {
-                a += ", " + sharedUsers[1].name;
+                a += connections > 2 ? ", " : " and ";
+                a += sharedUsers[1].name;
               }
               if (connections > 2) {
                 a +=
@@ -77,8 +82,15 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
           </div>
         </div>
         <div className="mb-2 flex gap-2">
-          <button className="btn btn-primary">Connect</button>
-          <button className="btn btn-ghost">Follow</button>
+          {
+            <div className="mb-2">
+              {mockUserIds.has(user.id) ? (
+                <button className="btn btn-primary">You are Family!</button>
+              ) : (
+                <button className="btn btn-primary">Connect as Family</button>
+              )}
+            </div>
+          }
         </div>
       </div>
     </div>
