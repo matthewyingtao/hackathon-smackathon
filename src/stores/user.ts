@@ -1,12 +1,14 @@
 import { atom } from "nanostores";
+import { uuid } from "uuidv4";
 
-export type Person = {
+export type User = {
   id: string;
   name: string;
   immediateFamily: string[];
   isMale: boolean;
   profileImage: string;
   bio: string;
+  spouse?: string;
 } & (
   | {
       socialClass: UserSocialClass.LOWER;
@@ -47,6 +49,10 @@ export enum UserLowerClassRole {
   SERF,
 }
 
-export const $users = atom<Person[]>([]);
+export const $users = atom<User[]>([]);
 
-export const addUser = (user: Person) => $users.set([...$users.get(), user]);
+export const addUser = (user: Omit<User, "id">) =>
+  $users.set([...$users.get(), { id: uuid(), ...user } as User]);
+
+export const removeUser = (id: string) =>
+  $users.set($users.get().filter((user) => user.id !== id));
