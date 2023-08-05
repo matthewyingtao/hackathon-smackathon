@@ -37,7 +37,7 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
             </div>
 
             <Link href="/">
-              <a className="normal-case">
+              <a className="normal-case" id="logo">
                 <img
                   src={logo}
                   alt="LinkedKin logo"
@@ -86,7 +86,13 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
                 tabIndex={0}
                 className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
               >
-                <li>
+                <li
+                  onClick={() =>
+                    (
+                      document.querySelector("#logo") as HTMLAnchorElement
+                    ).focus()
+                  }
+                >
                   <Link href={`/${currentUser.id}`}>
                     <a
                       className="justify-between"
@@ -97,7 +103,14 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
                     </a>
                   </Link>
                 </li>
-                <li style={dodgyAsFuckCssOverride}>
+                <li
+                  style={dodgyAsFuckCssOverride}
+                  onClick={() =>
+                    (
+                      document.querySelector("#logo") as HTMLAnchorElement
+                    ).focus()
+                  }
+                >
                   <a onClick={() => removeCurrentUser()}>logout</a>
                 </li>
               </ul>
