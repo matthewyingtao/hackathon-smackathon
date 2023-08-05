@@ -1,3 +1,10 @@
+import maCover from "@/assets/images/ma-cover.jpg";
+import Jean from "@/assets/images/pfps/jean.jpg";
+import KH4 from "@/assets/images/pfps/kh4.jpg";
+import Louis from "@/assets/images/pfps/louis.jpg";
+import maProfile from "@/assets/images/pfps/ma-profile.jpg";
+import Marie from "@/assets/images/pfps/marie.jpg";
+import Victoria from "@/assets/images/pfps/victoria.jpg";
 import {
   User,
   UserImmediateFamilyRelationshipEnum,
@@ -6,8 +13,6 @@ import {
   UserUpperClassRole,
 } from "@/stores/user";
 import { toDataUrl } from "@/utils";
-import maProfile from "@/assets/images/ma-profile.jpg";
-import maCover from "@/assets/images/ma-cover.jpg";
 
 export const users: User[] = [
   {
@@ -43,7 +48,7 @@ export const users: User[] = [
     immediateFamily: [],
     occupation: "King @ England",
     isMale: true,
-    profileImage: await toDataUrl(maProfile),
+    profileImage: await toDataUrl(KH4),
     coverImage: await toDataUrl(maCover),
     bio: "I'm a king, but I'm also a simp.",
     socialClass: UserSocialClass.UPPER,
@@ -70,7 +75,7 @@ export const users: User[] = [
     ],
     occupation: "King @ France",
     isMale: true,
-    profileImage: await toDataUrl(maProfile),
+    profileImage: await toDataUrl(Louis),
     coverImage: await toDataUrl(maCover),
     bio: "Bow down to me, peasants!",
     openTo: [UserOpenTo.MISTRESS],
@@ -97,7 +102,7 @@ export const users: User[] = [
     ],
     occupation: "Queen @ France",
     isMale: false,
-    profileImage: await toDataUrl(maProfile),
+    profileImage: await toDataUrl(Marie),
     coverImage: await toDataUrl(maCover),
     bio: "Marie-Thérèse Charlotte is the eldest child of King Louis XVI and Queen Marie Antoinette of France. In 1799 she married her cousin Louis Antoine, Duke of Angoulême, the eldest son of Charles, Count of Artois, henceforth becoming the Duchess of Angoulême. She was briefly Queen of France in 1830.",
     openTo: [],
@@ -124,7 +129,7 @@ export const users: User[] = [
     ],
     occupation: "Prince @ France",
     isMale: false,
-    profileImage: await toDataUrl(maProfile),
+    profileImage: await toDataUrl(Jean),
     coverImage: await toDataUrl(maCover),
     bio: "Jean Amilcar is the adopted son of King Louis XVI and Queen Marie Antoinette of France. Jean Amilcar was from French Senegal. He was enslaved as a child and then bought from local slavers by the French official Chevalier de Boufflers, who wished to spare him the deadly transatlantic crossing. ",
     openTo: [],
@@ -138,7 +143,7 @@ export const users: User[] = [
     immediateFamily: [],
     occupation: "Queen @ England",
     isMale: false,
-    profileImage: await toDataUrl(maProfile),
+    profileImage: await toDataUrl(Victoria),
     coverImage: await toDataUrl(maCover),
     bio: "Victoria is Queen of the United Kingdom of Great Britain and Ireland. Her reign will be longer than that of any of her predecessors. It was a period of industrial, political, scientific, and military change within the United Kingdom, and was marked by a great expansion of the British Empire.",
     openTo: [],
