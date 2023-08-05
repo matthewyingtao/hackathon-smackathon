@@ -7,7 +7,7 @@ import { $users } from "@/stores/user";
 const App: React.FC = () => {
   const users = useStore($users);
   return (
-    <div className="font-body bg-dark-sandstone min-h-screen">
+    <div className="font-body bg-muted-gold min-h-screen">
       <Navbar />
 
       <Route path="/">

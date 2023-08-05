@@ -12,6 +12,7 @@ export default {
     colors: {
       sandstone: "#B2A18D",
       "dark-sandstone": "#8F7A54",
+      "muted-gold": "#7D7463",
     },
   },
   plugins: [daisyui],
