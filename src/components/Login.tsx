@@ -32,7 +32,7 @@ export const Login: React.FC = () => {
             </select>
 
             <button
-              className="btn btn-primary ml-auto"
+              className="btn ml-auto"
               onClick={() => setShowConfirm(true)}
             >
               Login

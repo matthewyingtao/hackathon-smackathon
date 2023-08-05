@@ -32,7 +32,7 @@ const FeedWrite: React.FC = () => {
           rows={4}
         />
 
-        <button type="submit" className="btn btn-primary mt-2 ml-auto">
+        <button type="submit" className="btn mt-2 ml-auto">
           Post
           <FaPaperPlane />
         </button>

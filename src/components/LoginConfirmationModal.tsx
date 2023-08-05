@@ -59,10 +59,7 @@ const LoginConfirmationModal: React.FC<LoginConfirmationModalProps> = ({
               Close
             </button>
 
-            <button
-              className="btn btn-primary"
-              onClick={() => setCurrentUser(user.id)}
-            >
+            <button className="btn" onClick={() => setCurrentUser(user.id)}>
               Go
               <FaArrowRight />
             </button>

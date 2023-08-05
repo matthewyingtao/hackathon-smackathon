@@ -85,9 +85,9 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
             {
               <div className="mb-2">
                 {familyUserIds.has(user.id) ? (
-                  <button className="btn btn-primary">You are Family!</button>
+                  <button className="btn">You are Family!</button>
                 ) : (
-                  <button className="btn btn-primary">Connect as Family</button>
+                  <button className="btn">Connect as Family</button>
                 )}
               </div>
             }

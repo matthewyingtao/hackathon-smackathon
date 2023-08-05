@@ -41,7 +41,7 @@ const ManageMyWomanModal: React.FC<ManageMyWomanModalProps> = ({
         <h3 className="card-title font-display text-2xl mb-3">View DMs</h3>
 
         <div className="modal-action">
-          <button className="btn btn-primary" onClick={() => setShow(false)}>
+          <button className="btn" onClick={() => setShow(false)}>
             <FaXmark />
             Close
           </button>
