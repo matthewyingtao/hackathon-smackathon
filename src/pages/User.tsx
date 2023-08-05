@@ -11,9 +11,9 @@ const User: React.FC<UserProps> = ({ userId }) => {
   if (!user) return <h1>User not found</h1>;
 
   return (
-    <>
+    <div className="container mx-auto p-3">
       <UserBio user={user} />
-    </>
+    </div>
   );
 };
 

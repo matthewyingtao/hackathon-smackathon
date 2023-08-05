@@ -7,7 +7,7 @@ import { $users } from "@/stores/user";
 const App: React.FC = () => {
   const users = useStore($users);
   return (
-    <>
+    <div className="font-body bg-dark-sandstone min-h-screen">
       <Navbar />
 
       <Route path="/">
@@ -21,7 +21,7 @@ const App: React.FC = () => {
       <Route path="/:userId">
         {(params) => <User userId={params.userId} />}
       </Route>
-    </>
+    </div>
   );
 };
 
