@@ -1,16 +1,25 @@
-import { Route } from "wouter";
+import { Route, Link } from "wouter";
 import Navbar from "@/components/Navbar";
+import User from "@/pages/User";
+import { useStore } from "@nanostores/react";
+import { $users } from "@/stores/user";
 
 const App: React.FC = () => {
+  const users = useStore($users);
   return (
     <>
       <Navbar />
+
       <Route path="/">
-        <h1>Home</h1>
+        {users.map((u) => (
+          <Link key={u.id} href={u.id}>
+            {u.name}
+          </Link>
+        ))}
       </Route>
 
       <Route path="/:userId">
-        <h1>User page</h1>
+        {(params) => <User userId={params.userId} />}
       </Route>
     </>
   );

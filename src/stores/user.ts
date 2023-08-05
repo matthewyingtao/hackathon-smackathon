@@ -1,5 +1,5 @@
 import { atom } from "nanostores";
-import { uuid } from "uuidv4";
+import { v4 as uuid } from "uuid";
 
 export type User = {
   id: string;
@@ -64,3 +64,6 @@ export const addUser = (user: Omit<User, "id">) =>
 
 export const removeUser = (id: string) =>
   $users.set($users.get().filter((user) => user.id !== id));
+
+export const getUser = (id: string) =>
+  $users.get().find((user) => user.id === id);

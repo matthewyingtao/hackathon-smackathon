@@ -1,5 +1,5 @@
 import { atom } from "nanostores";
-import { uuid } from "uuidv4";
+import { v4 as uuid } from "uuid";
 
 export type Post = {
   id: string;
