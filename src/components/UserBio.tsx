@@ -18,12 +18,18 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
       </figure>
 
       <div className="absolute w-36 h-36 top-24 left-8">
-        <img src={frame} alt="" className="absolute w-full h-full" />
+        <img
+          src={frame}
+          alt=""
+          className="absolute w-full h-full"
+          draggable="false"
+        />
 
         <img
           src={user.profileImage}
           alt={`Profile image for ${user.name}`}
           className="w-32 h-32 m-2 object-cover rounded-full"
+          draggable="false"
         />
       </div>
 
@@ -81,7 +87,7 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
           </div>
         </div>
 
-        <div className="mb-2">
+        <div className="mb-2 flex gap-2">
           <button className="btn btn-primary">Connect</button>
           <button className="btn btn-ghost">Follow</button>
         </div>

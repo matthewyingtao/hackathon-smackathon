@@ -8,19 +8,19 @@ const App: React.FC = () => {
   const users = useStore($users);
   return (
     <div className="font-body bg-muted-gold min-h-screen">
-      <Navbar />
+      <Navbar>
+        <Route path="/">
+          {users.map((u) => (
+            <Link key={u.id} href={u.id}>
+              {u.name}
+            </Link>
+          ))}
+        </Route>
 
-      <Route path="/">
-        {users.map((u) => (
-          <Link key={u.id} href={u.id}>
-            {u.name}
-          </Link>
-        ))}
-      </Route>
-
-      <Route path="/:userId">
-        {(params) => <User userId={params.userId} />}
-      </Route>
+        <Route path="/:userId">
+          {(params) => <User userId={params.userId} />}
+        </Route>
+      </Navbar>
     </div>
   );
 };
