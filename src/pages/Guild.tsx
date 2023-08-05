@@ -1,34 +1,61 @@
-import { getGuild } from "@/stores/guilds";
-import guildCover from "@/assets/images/guild-cover.jpg";
+import { Guild, getGuild } from "@/stores/guilds";
+import { FaArrowDown } from "react-icons/fa6";
+import guildCover from "@/assets/images/guild-cover.png";
 import logo from "@/assets/images/logo.svg";
+import { useEffect, useState } from "react";
 
 interface GuildProps {
-  guildId: string;
+  guildId?: string;
 }
 
-const Guild: React.FC<GuildProps> = ({ guildId }) => {
-  const guild = getGuild(guildId);
-  // const currentUserId = useStore($currentUser)!;
-  // const currentUser = getUser(currentUserId)!;
-  if (!guild) return <h1>Guild not found</h1>;
+const GuildPage: React.FC<GuildProps> = ({ guildId }) => {
+  const [isLarge, setIsLarge] = useState(false);
+
+  let guild: Guild | undefined = undefined;
+  if (guildId) guild = getGuild(guildId);
+
+  useEffect(() => {
+    const resizeHandler = () => setIsLarge(window.innerWidth >= 1024);
+    window.addEventListener("resize", resizeHandler);
+
+    resizeHandler();
+
+    return () => {
+      window.removeEventListener("resize", resizeHandler);
+    };
+  }, []);
 
   return (
     <div
-      className="min-h-screen -mt-20 flex items-center justify-center flex-col"
+      className="flex min-h-screen items-center justify-center flex-col bg-cover bg-center"
       style={{
-        background: "black",
         backgroundImage: `url(${guildCover})`,
+        marginTop: isLarge ? "-76px" : "-64px",
       }}
     >
-      <div className="container mx-auto text-white text-center">
-        <h2 className="font-accent text-9xl">Guilds</h2>
-        <div className="flex items-center gap-2 justify-center">
-          By
-          <img src={logo} alt="LinkedKin logo" className="" draggable="false" />
-        </div>
+      <div className="container mx-auto text-white text-center grow flex flex-col justify-center p-3">
+        <h2 className="font-accent text-9xl">
+          {guild ? guild.name : "Guilds"}
+        </h2>
+        {!guild && (
+          <div className="flex items-center gap-2 justify-center">
+            By
+            <img
+              src={logo}
+              alt="LinkedKin logo"
+              className=""
+              draggable="false"
+            />
+          </div>
+        )}
+      </div>
+
+      <div className="text-center text-white px-3 py-6">
+        <div className="mb-2">Scroll down to enter</div>
+        <FaArrowDown className="mx-auto" />
       </div>
     </div>
   );
 };
 
-export default Guild;
+export default GuildPage;

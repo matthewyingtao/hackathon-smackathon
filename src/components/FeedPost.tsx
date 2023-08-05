@@ -25,7 +25,7 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
     <div className="card w-full bg-sandstone shadow-xl">
       <div className="card-body block p-3">
         <div className="flex mb-3">
-          <Link href={`/${user.id}`}>
+          <Link href={`/user/${user.id}`}>
             <a className="relative w-12 h-12 mr-4">
               <UserPicture
                 profileImage={user.profileImage}
@@ -36,7 +36,7 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
           </Link>
 
           <div>
-            <Link href={`/${user.id}`}>
+            <Link href={`/user/${user.id}`}>
               <a className="z-10 relative">
                 <h2 className="font-display text-bold text-xl font-bold">
                   {user.name}

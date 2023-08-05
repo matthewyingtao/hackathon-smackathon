@@ -39,7 +39,7 @@ const UserFamily: React.FC<UserFamilyProps> = ({ user }) => {
               const uInfo = getUser(u.userId)!;
 
               return (
-                <Link href={`/${u.userId}`} key={i}>
+                <Link href={`/user/${u.userId}`} key={i}>
                   <a className="w-12 h-12">
                     <UserPicture
                       profileImage={uInfo.profileImage}

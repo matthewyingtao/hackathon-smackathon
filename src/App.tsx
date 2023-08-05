@@ -1,12 +1,12 @@
 import Login from "@/components/Login";
 import Navbar from "@/components/Navbar";
 import Feed from "@/pages/Feed";
-import Guild from "@/pages/Guild";
 import Search from "@/pages/Search";
 import User from "@/pages/User";
 import { $currentUserId } from "@/stores/user";
 import { useStore } from "@nanostores/react";
 import { Route } from "wouter";
+import GuildPage from "@/pages/Guild";
 
 const App: React.FC = () => {
   const currentUser = useStore($currentUserId);
@@ -21,11 +21,15 @@ const App: React.FC = () => {
             <Feed />
           </Route>
 
-          <Route path="/guild/:guildId">
-            {(params) => <Guild guildId={params.guildId} />}
+          <Route path="/guilds">
+            <GuildPage />
           </Route>
 
-          <Route path="/:userId">
+          <Route path="/guild/:guildId">
+            {(params) => <GuildPage guildId={params.guildId} />}
+          </Route>
+
+          <Route path="/user/:userId">
             {(params) => <User userId={params.userId} />}
           </Route>
 
