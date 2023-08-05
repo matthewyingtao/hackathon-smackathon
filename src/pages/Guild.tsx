@@ -13,12 +13,12 @@ const GuildPage: React.FC<GuildProps> = ({ guildId }) => {
 
   return (
     <div
-      className="min-h-screen -mt-20 flex items-center justify-center flex-col bg-cover bg-center"
+      className="min-h-screen -mt-16 flex items-center justify-center flex-col bg-cover bg-center"
       style={{
         backgroundImage: `url(${guildCover})`,
       }}
     >
-      <div className="container mx-auto text-white text-center grow flex flex-col justify-center">
+      <div className="container mx-auto text-white text-center grow flex flex-col justify-center p-3">
         <h2 className="font-accent text-9xl">
           {guild ? guild.name : "Guilds"}
         </h2>
