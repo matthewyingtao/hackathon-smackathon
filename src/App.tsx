@@ -12,7 +12,7 @@ const App: React.FC = () => {
   const currentUser = useStore($currentUserId);
 
   return (
-    <div className="font-body bg-muted-gold min-h-screen">
+    <div className="font-body bg-muted-gold min-h-screen text-[hsl(215_28%_17%)]">
       {currentUser === null ? (
         <Login></Login>
       ) : (
@@ -29,8 +29,8 @@ const App: React.FC = () => {
             {(params) => <User userId={params.userId} />}
           </Route>
 
-          <Route path="/search/:query">
-            {(params) => <Search query={params.query} />}
+          <Route path="/search">
+            <Search />
           </Route>
         </Navbar>
       )}

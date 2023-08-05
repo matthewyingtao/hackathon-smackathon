@@ -1,21 +1,32 @@
+import FeedPost from "@/components/FeedPost";
+import UserHeader from "@/components/UserHeader";
 import { searchPosts, searchUser } from "@/shitfuckery/search";
 
-interface SearchProps {
-  query: string;
-}
+const Search: React.FC = () => {
+  const location = window.location.href;
+  const searchParams = new URLSearchParams(location).values();
 
-const Guild: React.FC<SearchProps> = ({ query }) => {
+  const query = searchParams.next().value || "";
+
   const matchedPosts = searchPosts.search(query);
   const matchedUsers = searchUser.search(query);
 
   return (
     <div className="container mx-auto p-3 grid gap-x-3 gap-y-2 grid-cols-12">
       <div className="col-span-12 lg:col-span-8">
-        {JSON.stringify(matchedUsers)}
-        {JSON.stringify(matchedPosts)}
+        <div>
+          {matchedUsers.map(({ item }) => (
+            <UserHeader user={item} />
+          ))}
+        </div>
+        <div>
+          {matchedPosts.map(({ item }) => (
+            <FeedPost post={item} />
+          ))}
+        </div>
       </div>
     </div>
   );
 };
 
-export default Guild;
+export default Search;

@@ -1,8 +1,8 @@
 import { Post } from "@/stores/posts";
-import UserPicture from "./UserPicture";
 import { getUser } from "@/stores/user";
-import { Link } from "wouter";
 import ReactMarkdown from "react-markdown";
+import { Link } from "wouter";
+import UserPicture from "./UserPicture";
 
 interface FeedPostProps {
   post: Post;
@@ -54,7 +54,7 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
           {post.title}
         </h3>
 
-        <div className="break-words">
+        <div className="whitespace-pre-wrap leading-relaxed">
           <ReactMarkdown
             components={{
               a: ({ href, children, ...props }) => (

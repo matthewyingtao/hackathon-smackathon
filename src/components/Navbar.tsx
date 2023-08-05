@@ -1,10 +1,11 @@
-import { PropsWithChildren } from "react";
-import { FaMagnifyingGlass, FaBars } from "react-icons/fa6";
 import logo from "@/assets/images/logo.svg";
-import { Link } from "wouter";
-import UserPicture from "./UserPicture";
 import { $currentUserId, getUser, removeCurrentUser } from "@/stores/user";
 import { useStore } from "@nanostores/react";
+import { PropsWithChildren, useState } from "react";
+import { FaBars, FaMagnifyingGlass } from "react-icons/fa6";
+import { Link } from "wouter";
+import { navigate } from "wouter/use-location";
+import UserPicture from "./UserPicture";
 
 const dodgyAsFuckCssOverride = {
   "--bc": "32 19% 63%",
@@ -17,6 +18,8 @@ const anotherDodgyAsFuckCssOverride = {
 } as React.CSSProperties;
 
 const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
+  const [searchVal, setSearchVal] = useState("");
+
   const currentUserId = useStore($currentUserId)!;
   const currentUser = getUser(currentUserId)!;
 
@@ -52,13 +55,26 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
                 <FaMagnifyingGlass className="h-full" color="white" />
               </div>
 
-              <input
-                type="text"
-                className="input input-bordered w-24 md:w-auto border-muted-gold pl-10 rounded-3xl"
-                style={{
-                  background: "linear-gradient(to bottom, #bdb096, #7D7463)",
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+
+                  navigate(`/search?q=${searchVal}`, {
+                    replace: true,
+                  });
                 }}
-              />
+              >
+                <input
+                  type="text"
+                  value={searchVal}
+                  onChange={(e) => setSearchVal(e.currentTarget.value)}
+                  className="input input-bordered w-24 md:w-auto border-muted-gold pl-10 rounded-3xl"
+                  style={{
+                    background: "linear-gradient(to bottom, #bdb096, #7D7463)",
+                  }}
+                />
+                <input type="submit" hidden />
+              </form>
             </div>
           </div>
 
