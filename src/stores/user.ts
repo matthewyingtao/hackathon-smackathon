@@ -8,6 +8,7 @@ export type User = {
   occupation: string;
   isMale: boolean;
   profileImage: string;
+  coverImage: string;
   bio: string;
   spouse?: string;
   openTo: UserOpenTo[];
