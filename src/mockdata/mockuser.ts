@@ -8,7 +8,7 @@ import {
 export const mockUser: User = {
   id: "123",
   name: "Marie Antoinette",
-  immediateFamilyUserIds: ["John", "May"],
+  immediateFamilyUserIds: ["2"],
   occupation: "Queen consort of King Louis XVI of France | Ex-Archduchess",
   isMale: false,
   coverImage: "",

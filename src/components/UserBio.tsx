@@ -1,4 +1,5 @@
-import { User } from "@/stores/user";
+import { User, getUser } from "@/stores/user";
+import { mockUser } from "@/mockdata/mockuser";
 import frame from "@/assets/images/frame.png";
 
 interface UserHeaderProps {
@@ -38,15 +39,45 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
 
         <div className="mb-4">
           <div className="font-display text-2xl">
-            { 
-              user.immediateFamilyUserIds.length.toPrecision(1) + 
-              (user.immediateFamilyUserIds.length === parseInt(user.immediateFamilyUserIds.length.toPrecision(1)) 
-              ? " fellowships" 
-              : "+ fellowships")
-            } 
+            {user.immediateFamilyUserIds.length.toPrecision(1) +
+              (user.immediateFamilyUserIds.length ===
+              parseInt(user.immediateFamilyUserIds.length.toPrecision(1))
+                ? " fellowships"
+                : "+ fellowships")}
           </div>
           <div className="font-display">
-            Louis XVI, Phillipe I and 2 other mutual fellowships
+            {(() => {
+              let a: string = "";
+
+              const sharedUsers: User[] = user.immediateFamilyUserIds
+                .filter((id) => mockUser.immediateFamilyUserIds.includes(id))
+                .map((id) => getUser(id))
+                .filter(
+                  (user) => user !== null && user !== undefined,
+                ) as User[];
+
+              const connections = sharedUsers.length;
+
+              if (!connections) {
+                return "You share no mutual fellowships";
+              }
+
+              if (connections > 0) {
+                a += sharedUsers[0].name;
+              }
+              if (connections > 1) {
+                a += ", " + sharedUsers[1].name;
+              }
+              if (connections > 2) {
+                a +=
+                  ", and " +
+                  (connections - 2) +
+                  " mildly redundant fellowship" +
+                  (connections - 2 === 1 ? "" : "s");
+              }
+
+              return a;
+            })()}
           </div>
         </div>
 
