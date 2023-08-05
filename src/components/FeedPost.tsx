@@ -39,7 +39,11 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
           </div>
         </div>
 
-        <p className="break-all">{post.body}</p>
+        <h3 className="font-display text-bold text-2xl font-bold mb-3">
+          {post.title}
+        </h3>
+
+        <p className="break-words">{post.body}</p>
       </div>
     </div>
   );

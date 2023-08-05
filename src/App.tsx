@@ -4,7 +4,8 @@ import Navbar from "@/components/Navbar";
 import User from "@/pages/User";
 import { useStore } from "@nanostores/react";
 import { $currentUser } from "@/stores/user";
-import Feed from "./pages/Feed";
+import Feed from "@/pages/Feed";
+import Guild from "@/pages/Guild";
 
 const App: React.FC = () => {
   const currentUser = useStore($currentUser);
@@ -17,6 +18,10 @@ const App: React.FC = () => {
         <Navbar>
           <Route path="/">
             <Feed />
+          </Route>
+
+          <Route path="/guild/:guildId">
+            {(params) => <Guild guildId={params.guildId} />}
           </Route>
 
           <Route path="/:userId">

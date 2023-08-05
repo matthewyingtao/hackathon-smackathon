@@ -4,6 +4,7 @@ import FeedPost from "@/components/FeedPost";
 import { $posts } from "@/stores/posts";
 import { $currentUser, $users } from "@/stores/user";
 import { useStore } from "@nanostores/react";
+import FeedGuildsSidebar from "@/components/FeedGuildsSidebar";
 
 const Feed: React.FC = () => {
   const currentUserId = useStore($currentUser)!;
@@ -19,11 +20,11 @@ const Feed: React.FC = () => {
         <FeedWrite />
 
         {posts.map((p) => (
-          <FeedPost post={p} />
+          <FeedPost key={p.id} post={p} />
         ))}
       </div>
 
-      <div className="hidden lg:block lg:col-span-3">cd</div>
+      <FeedGuildsSidebar />
     </div>
   );
 };

@@ -22,6 +22,7 @@ export type User = {
   coverImage: string;
   bio: string;
   openTo: UserOpenTo[];
+  followingGuildIds: string[];
 } & (
   | {
       socialClass: UserSocialClass.LOWER;

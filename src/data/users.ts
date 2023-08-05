@@ -35,6 +35,7 @@ export const users: User[] = [
     openTo: [UserOpenTo.JOB],
     socialClass: UserSocialClass.UPPER,
     role: UserUpperClassRole.MONARCH,
+    followingGuildIds: [],
   },
   {
     id: "2",
@@ -48,6 +49,7 @@ export const users: User[] = [
     socialClass: UserSocialClass.UPPER,
     role: UserUpperClassRole.MONARCH,
     openTo: [UserOpenTo.MARRIAGE, UserOpenTo.MISTRESS],
+    followingGuildIds: [],
   },
   {
     id: "3",
@@ -74,6 +76,7 @@ export const users: User[] = [
     openTo: [UserOpenTo.MISTRESS],
     socialClass: UserSocialClass.UPPER,
     role: UserUpperClassRole.MONARCH,
+    followingGuildIds: [],
   },
   {
     id: "4",
@@ -100,6 +103,7 @@ export const users: User[] = [
     openTo: [],
     socialClass: UserSocialClass.UPPER,
     role: UserUpperClassRole.NOBLE,
+    followingGuildIds: [],
   },
   {
     id: "5",
@@ -126,5 +130,20 @@ export const users: User[] = [
     openTo: [],
     socialClass: UserSocialClass.UPPER,
     role: UserUpperClassRole.NOBLE,
+    followingGuildIds: [],
+  },
+  {
+    id: "6",
+    name: "Victoria",
+    immediateFamily: [],
+    occupation: "Queen @ England",
+    isMale: false,
+    profileImage: await toDataUrl(maProfile),
+    coverImage: await toDataUrl(maCover),
+    bio: "Victoria is Queen of the United Kingdom of Great Britain and Ireland. Her reign will be longer than that of any of her predecessors. It was a period of industrial, political, scientific, and military change within the United Kingdom, and was marked by a great expansion of the British Empire.",
+    openTo: [],
+    socialClass: UserSocialClass.UPPER,
+    role: UserUpperClassRole.MONARCH,
+    followingGuildIds: [],
   },
 ];
