@@ -8,8 +8,9 @@ import { toDataUrl } from "@/utils";
 import maProfile from "@/assets/images/ma-profile.jpg";
 import maCover from "@/assets/images/ma-cover.jpg";
 
-export const users: Omit<User, "id">[] = [
+export const users: User[] = [
   {
+    id: "1",
     name: "Marie Antoinette",
     immediateFamilyUserIds: [],
     occupation: "Queen consort of King Louis XVI of France | Ex-Archduchess",
@@ -23,6 +24,7 @@ export const users: Omit<User, "id">[] = [
     role: UserUpperClassRole.MONARCH,
   },
   {
+    id: "2",
     name: "King Henry VIII",
     immediateFamilyUserIds: [],
     occupation: "King of England",

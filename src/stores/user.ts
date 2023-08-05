@@ -60,8 +60,8 @@ export enum UserOpenTo {
 
 export const $users = atom<User[]>([]);
 
-export const addUser = (user: Omit<User, "id">) =>
-  $users.set([...$users.get(), { id: uuid(), ...user } as User]);
+export const addUser = (user: User) =>
+  $users.set([...$users.get(), user]);
 
 export const removeUser = (id: string) =>
   $users.set($users.get().filter((user) => user.id !== id));
