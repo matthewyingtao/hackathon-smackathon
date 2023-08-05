@@ -3,7 +3,8 @@ import { FaMagnifyingGlass, FaBars } from "react-icons/fa6";
 import logo from "@/assets/images/logo.svg";
 import { Link } from "wouter";
 import UserPicture from "./UserPicture";
-import { $users, removeCurrentUser } from "@/stores/user";
+import { $currentUser, $users, removeCurrentUser } from "@/stores/user";
+import { useStore } from "@nanostores/react";
 
 const dodgyAsFuckCssOverride = {
   "--bc": "32 19% 63%",
@@ -16,6 +17,9 @@ const anotherDodgyAsFuckCssOverride = {
 } as React.CSSProperties;
 
 const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
+  const currentUserId = useStore($currentUser)!;
+  const currentUser = $users.get().find((u) => u.id === currentUserId)!;
+
   return (
     <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -72,8 +76,8 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <UserPicture
-                  profileImage={$users.get()[0].profileImage}
-                  name={$users.get()[0].name}
+                  profileImage={currentUser.profileImage}
+                  name={currentUser.name}
                   size="48px"
                 />
               </label>
@@ -83,7 +87,7 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
                 className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <Link href={`/${$users.get()[0].id}`}>
+                  <Link href={`/${currentUser.id}`}>
                     <a
                       className="justify-between"
                       style={dodgyAsFuckCssOverride}
@@ -119,18 +123,24 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
           {[
             { text: "connections" },
             { text: "guilds" },
-            { text: "profile" },
+            { text: "profile", href: `/${currentUser.id}` },
             { text: "logout", onClick: () => removeCurrentUser() },
-          ].map(({ text, ...args }) => (
-            <li key={text}>
+          ].map(({ text, href, ...args }) => {
+            const item = (
               <a
                 style={{ color: "#ffffff", ...anotherDodgyAsFuckCssOverride }}
                 {...args}
               >
                 {text}
               </a>
-            </li>
-          ))}
+            );
+
+            return (
+              <li key={text}>
+                {href ? <Link href={href}>{item}</Link> : item}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>

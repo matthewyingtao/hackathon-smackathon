@@ -1,6 +1,7 @@
 import { User, getUser } from "@/stores/user";
 import { mockUser } from "@/mockdata/mockuser";
 import UserPicture from "./UserPicture";
+import { displayFellowships } from "@/utils";
 
 interface UserHeaderProps {
   user: User;
@@ -39,11 +40,7 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
         </div>
         <div className="mb-4">
           <div className="font-display text-2xl">
-            {user.immediateFamily.length.toPrecision(1) +
-              (user.immediateFamily.length ===
-              parseInt(user.immediateFamily.length.toPrecision(1))
-                ? " fellowships"
-                : "+ fellowships")}
+            {displayFellowships(user)}
           </div>
           <div className="font-display">
             {(() => {

@@ -1,12 +1,12 @@
-import { Route, Link } from "wouter";
+import { Route } from "wouter";
 import Login from "@/components/Login";
 import Navbar from "@/components/Navbar";
 import User from "@/pages/User";
 import { useStore } from "@nanostores/react";
-import { $currentUser, $users } from "@/stores/user";
+import { $currentUser } from "@/stores/user";
+import Feed from "./pages/Feed";
 
 const App: React.FC = () => {
-  const users = useStore($users);
   const currentUser = useStore($currentUser);
 
   return (
@@ -16,11 +16,7 @@ const App: React.FC = () => {
       ) : (
         <Navbar>
           <Route path="/">
-            {users.map((u) => (
-              <Link key={u.id} href={u.id}>
-                {u.name}
-              </Link>
-            ))}
+            <Feed />
           </Route>
 
           <Route path="/:userId">
