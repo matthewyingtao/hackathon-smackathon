@@ -2,6 +2,7 @@ import { Post } from "@/stores/posts";
 import UserPicture from "./UserPicture";
 import { getUser } from "@/stores/user";
 import { Link } from "wouter";
+import ReactMarkdown from "react-markdown";
 
 interface FeedPostProps {
   post: Post;
@@ -9,6 +10,16 @@ interface FeedPostProps {
 
 const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
   const user = getUser(post.userId)!;
+
+  const replaceHashtagsWithLinks = (text: string): string => {
+    const hashtagRegex = /#(\w+)/g;
+
+    return text.replace(
+      hashtagRegex,
+      (match: string, hashtag: string) =>
+        `[${match}](/search/?q=${encodeURIComponent(hashtag)})`,
+    );
+  };
 
   return (
     <div className="card w-full bg-sandstone shadow-xl">
@@ -43,7 +54,19 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
           {post.title}
         </h3>
 
-        <p className="break-words">{post.body}</p>
+        <div className="break-words">
+          <ReactMarkdown
+            components={{
+              a: ({ href, children, ...props }) => (
+                <Link href={href as string} {...props}>
+                  <a className="link link-primary">{children}</a>
+                </Link>
+              ),
+            }}
+          >
+            {replaceHashtagsWithLinks(post.body)}
+          </ReactMarkdown>
+        </div>
       </div>
     </div>
   );
