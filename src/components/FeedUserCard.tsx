@@ -9,7 +9,7 @@ interface FeedUserCardProps {
 
 const FeedUserCard: React.FC<FeedUserCardProps> = ({ user }) => {
   return (
-    <Link href={`/${user.id}`}>
+    <Link href={`/user/${user.id}`}>
       <a className="card w-full bg-sandstone shadow-xl hidden lg:block lg:col-span-3">
         <figure className="h-20">
           <img

@@ -24,7 +24,7 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
     <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
-        <div className="w-full navbar bg-muted-gold container mx-auto px-3">
+        <div className="w-full navbar container mx-auto px-3 z-10">
           <div className="navbar-start gap-4">
             <div className="flex-none lg:hidden">
               <label
@@ -64,11 +64,16 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
 
           <div className="navbar-end hidden lg:flex">
             <ul className="menu menu-horizontal px-1 font-display font-bold text-xl">
-              {["connections", "guilds"].map((i) => (
-                <li key={i}>
-                  <a style={{ color: "#ffffff", ...dodgyAsFuckCssOverride }}>
-                    {i}
-                  </a>
+              {[
+                { text: "connections", href: "/connections" },
+                { text: "guilds", href: "/guilds" },
+              ].map(({ href, ...i }) => (
+                <li key={i.text}>
+                  <Link href={href}>
+                    <a style={{ color: "#ffffff", ...dodgyAsFuckCssOverride }}>
+                      {i.text}
+                    </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -93,7 +98,7 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
                     ).focus()
                   }
                 >
-                  <Link href={`/${currentUser.id}`}>
+                  <Link href={`/user/${currentUser.id}`}>
                     <a
                       className="justify-between"
                       style={dodgyAsFuckCssOverride}
@@ -143,7 +148,7 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
           {[
             { text: "connections" },
             { text: "guilds" },
-            { text: "profile", href: `/${currentUser.id}` },
+            { text: "profile", href: `/user/${currentUser.id}` },
             { text: "logout", onClick: () => removeCurrentUser() },
           ].map(({ text, href, onClick, ...args }) => {
             const item = (
