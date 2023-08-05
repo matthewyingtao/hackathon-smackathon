@@ -18,7 +18,7 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
     <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
-        <div className="w-full navbar bg-muted-gold container mx-auto">
+        <div className="w-full navbar bg-muted-gold container mx-auto px-3">
           <div className="navbar-start gap-4">
             <div className="flex-none lg:hidden">
               <label

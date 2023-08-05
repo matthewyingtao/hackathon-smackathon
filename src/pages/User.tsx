@@ -1,3 +1,5 @@
+import UserHeader from "@/components/UserHeader";
+import UserFamily from "@/components/UserFamily";
 import UserBio from "@/components/UserBio";
 import { getUser } from "@/stores/user";
 
@@ -11,7 +13,11 @@ const User: React.FC<UserProps> = ({ userId }) => {
   if (!user) return <h1>User not found</h1>;
 
   return (
-    <div className="container mx-auto p-2">
+    <div className="container mx-auto p-3 grid gap-x-6 gap-y-2 grid-cols-12">
+      <UserHeader user={user} />
+
+      <UserFamily user={user} />
+
       <UserBio user={user} />
     </div>
   );
