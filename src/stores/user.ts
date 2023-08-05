@@ -10,7 +10,7 @@ export type User = {
   profileImage: string;
   bio: string;
   spouse?: string;
-  openTo: UserOpenToEnum[];
+  openTo: UserOpenTo[];
 } & (
   | {
       socialClass: UserSocialClass.LOWER;
@@ -51,7 +51,7 @@ export enum UserLowerClassRole {
   SERF,
 }
 
-export enum UserOpenToEnum {
+export enum UserOpenTo {
   MARRIAGE,
   MISTRESS,
   JOB,
