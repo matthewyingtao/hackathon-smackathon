@@ -14,6 +14,8 @@ export default {
       "dark-sandstone": "#8F7A54",
       "muted-gold": "#7D7463",
       "dark-gold": "#8F7A54",
+      "woman-pink": "#ff91af",
+      white: "#FFFFFF",
     },
   },
   plugins: [daisyui],

@@ -8,7 +8,7 @@ interface UserHeaderProps {
 
 const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
   return (
-    <div className="card w-full bg-sandstone shadow-xl col-span-12 lg:col-span-8">
+    <div className="card w-full bg-sandstone shadow-xl">
       <figure className="h-48">
         <img
           src={user.coverImage}

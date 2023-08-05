@@ -61,7 +61,7 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
           <div className="navbar-end hidden lg:flex">
             <ul className="menu menu-horizontal px-1 font-display font-bold text-xl">
               {["connections", "guilds"].map((i) => (
-                <li>
+                <li key={i}>
                   <a style={{ color: "#ffffff", ...dodgyAsFuckCssOverride }}>
                     {i}
                   </a>
@@ -117,7 +117,7 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
           </Link>
 
           {["connections", "guilds", "profile", "logout"].map((i) => (
-            <li>
+            <li key={i}>
               <a style={{ color: "#ffffff", ...anotherDodgyAsFuckCssOverride }}>
                 {i}
               </a>
