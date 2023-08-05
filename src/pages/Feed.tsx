@@ -2,12 +2,12 @@ import FeedUserCard from "@/components/FeedUserCard";
 import FeedWrite from "@/components/FeedWrite";
 import FeedPost from "@/components/FeedPost";
 import { $posts } from "@/stores/posts";
-import { $currentUser, $users } from "@/stores/user";
+import { $currentUserId, $users } from "@/stores/user";
 import { useStore } from "@nanostores/react";
 import FeedGuildsSidebar from "@/components/FeedGuildsSidebar";
 
 const Feed: React.FC = () => {
-  const currentUserId = useStore($currentUser)!;
+  const currentUserId = useStore($currentUserId)!;
   const currentUser = $users.get().find((u) => u.id === currentUserId)!;
 
   const posts = useStore($posts);

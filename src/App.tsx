@@ -4,12 +4,12 @@ import Feed from "@/pages/Feed";
 import Guild from "@/pages/Guild";
 import Search from "@/pages/Search";
 import User from "@/pages/User";
-import { $currentUser } from "@/stores/user";
+import { $currentUserId } from "@/stores/user";
 import { useStore } from "@nanostores/react";
 import { Route } from "wouter";
 
 const App: React.FC = () => {
-  const currentUser = useStore($currentUser);
+  const currentUser = useStore($currentUserId);
 
   return (
     <div className="font-body bg-muted-gold min-h-screen">

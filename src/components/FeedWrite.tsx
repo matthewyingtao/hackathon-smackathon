@@ -1,12 +1,12 @@
 import { addPost } from "@/stores/posts";
-import { $currentUser } from "@/stores/user";
+import { $currentUserId } from "@/stores/user";
 import { useStore } from "@nanostores/react";
 import { FaPaperPlane } from "react-icons/fa6";
 
 const FOUR_HUNDRED_YEARS = 400 * 365 * 24 * 60 * 60 * 1000;
 
 const FeedWrite: React.FC = () => {
-  const currentUserId = useStore($currentUser)!;
+  const currentUserId = useStore($currentUserId)!;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

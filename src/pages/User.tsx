@@ -2,7 +2,7 @@ import UserHeader from "@/components/UserHeader";
 import UserFamily from "@/components/UserFamily";
 import UserBio from "@/components/UserBio";
 import {
-  $currentUser,
+  $currentUserId,
   UserImmediateFamilyRelationshipEnum,
   getUser,
 } from "@/stores/user";
@@ -19,7 +19,7 @@ const User: React.FC<UserProps> = ({ userId }) => {
   const [showManageMyWomanModal, setShowManageMyWomanModal] = useState(false);
 
   const user = getUser(userId);
-  const currentUserId = useStore($currentUser)!;
+  const currentUserId = useStore($currentUserId)!;
   const currentUser = getUser(currentUserId)!;
   if (!user) return <h1>User not found</h1>;
 
