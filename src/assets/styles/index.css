@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 :root {
-  font-family: "Inknut Antiqua", Inter, system-ui, Avenir, Helvetica, Arial,
-    sans-serif;
+  font-family:
+    "Inknut Antiqua",
+    system-ui sans-serif;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -73,5 +74,23 @@
   font-style: normal;
   font-weight: 900;
   src: url("@/assets/fonts/inknut-antiqua-v14-latin_latin-ext-900.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Imperial Script";
+  font-style: normal;
+  font-weight: 400;
+  src: url("@/assets/fonts/imperial-script-v3-latin_latin-ext-regular.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Island Moments";
+  font-style: normal;
+  font-weight: 400;
+  src: url("@/assets/fonts/island-moments-v3-latin-regular.woff2")
     format("woff2");
 }
