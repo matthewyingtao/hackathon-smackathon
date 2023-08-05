@@ -1,16 +1,17 @@
-import { User, getUser } from "@/stores/user";
-import { mockUser } from "@/mockdata/mockuser";
+import { $currentUser, User, getUser } from "@/stores/user";
 import UserPicture from "./UserPicture";
 import { displayFellowships } from "@/utils";
+import { useStore } from "@nanostores/react";
 
 interface UserHeaderProps {
   user: User;
 }
 
 const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
-  const mockUserIds = new Set(
-    mockUser.immediateFamily.map((obj) => obj.userId),
-  );
+  const familyUserIds = new Set(user.immediateFamily.map((obj) => obj.userId));
+
+  const currrentUserId = useStore($currentUser)!;
+  const isCurrentUser = currrentUserId === user.id;
 
   return (
     <div className="card w-full bg-sandstone shadow-xl">
@@ -19,6 +20,7 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
           src={user.coverImage}
           alt={`Cover image for ${user.name}`}
           className="w-full"
+          draggable="false"
         />
       </figure>
 
@@ -47,7 +49,7 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
               let a: string = "";
 
               const sharedUsers: User[] = user.immediateFamily
-                .filter(({ userId }) => mockUserIds.has(userId))
+                .filter(({ userId }) => familyUserIds.has(userId))
                 .map(({ userId }) => getUser(userId))
                 .filter(
                   (user) => user !== null && user !== undefined,
@@ -78,17 +80,19 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
             })()}
           </div>
         </div>
-        <div className="mb-2 flex gap-2">
-          {
-            <div className="mb-2">
-              {mockUserIds.has(user.id) ? (
-                <button className="btn btn-primary">You are Family!</button>
-              ) : (
-                <button className="btn btn-primary">Connect as Family</button>
-              )}
-            </div>
-          }
-        </div>
+        {!isCurrentUser && (
+          <div className="mb-2 flex gap-2">
+            {
+              <div className="mb-2">
+                {familyUserIds.has(user.id) ? (
+                  <button className="btn btn-primary">You are Family!</button>
+                ) : (
+                  <button className="btn btn-primary">Connect as Family</button>
+                )}
+              </div>
+            }
+          </div>
+        )}
       </div>
     </div>
   );

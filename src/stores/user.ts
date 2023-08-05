@@ -6,10 +6,10 @@ export interface UserImmediateFamily {
 }
 
 export enum UserImmediateFamilyRelationshipEnum {
-  FATHER,
-  MOTHER,
-  SON,
-  DAUGHTER,
+  PARENT,
+  CHILD,
+  SPOUSE,
+  SIBLING,
 }
 
 export type User = {
@@ -21,7 +21,6 @@ export type User = {
   profileImage: string;
   coverImage: string;
   bio: string;
-  spouse?: string;
   openTo: UserOpenTo[];
 } & (
   | {
@@ -78,8 +77,6 @@ export const removeUser = (id: string) =>
 
 export const getUser = (id: string) =>
   $users.get().find((user) => user.id === id);
-
-export const addFamilyConnection = (id: string) => {};
 
 export const $currentUser = atom<string | null>(null);
 

@@ -1,10 +1,15 @@
 import UserHeader from "@/components/UserHeader";
 import UserFamily from "@/components/UserFamily";
 import UserBio from "@/components/UserBio";
-import { getUser } from "@/stores/user";
+import {
+  $currentUser,
+  UserImmediateFamilyRelationshipEnum,
+  getUser,
+} from "@/stores/user";
 import { FaInfo, FaArrowRight } from "react-icons/fa6";
 import { useState } from "react";
 import ManageMyWomanModal from "@/components/ManageMyWomanModal";
+import { useStore } from "@nanostores/react";
 
 interface UserProps {
   userId: string;
@@ -12,9 +17,25 @@ interface UserProps {
 
 const User: React.FC<UserProps> = ({ userId }) => {
   const [showManageMyWomanModal, setShowManageMyWomanModal] = useState(false);
-  const user = getUser(userId);
 
+  const user = getUser(userId);
+  const currentUserId = useStore($currentUser)!;
+  const currentUser = getUser(currentUserId)!;
   if (!user) return <h1>User not found</h1>;
+
+  const isDaughter = currentUser.immediateFamily.some(
+    (u) =>
+      u.userId === user.id &&
+      u.relationship === UserImmediateFamilyRelationshipEnum.CHILD &&
+      getUser(u.userId)!.isMale === false,
+  );
+
+  const isWife = currentUser.immediateFamily.some(
+    (u) =>
+      u.userId === user.id &&
+      u.relationship === UserImmediateFamilyRelationshipEnum.SPOUSE &&
+      getUser(u.userId)!.isMale === false,
+  );
 
   return (
     <>
@@ -22,19 +43,23 @@ const User: React.FC<UserProps> = ({ userId }) => {
         <div className="col-span-12 lg:col-span-8">
           <UserHeader user={user} />
 
-          <div className="alert bg-woman-pink border-woman-pink text-white mt-2">
-            <FaInfo />
+          {currentUser.isMale && (isDaughter || isWife) && (
+            <div className="alert bg-woman-pink border-woman-pink text-white mt-2">
+              <FaInfo />
 
-            <span>This woman is your daughter.</span>
+              <span>
+                This woman is your {isDaughter ? "daughter" : "wife"}.
+              </span>
 
-            <button
-              className="btn btn-primary float-right"
-              onClick={() => setShowManageMyWomanModal(true)}
-            >
-              Go to Dashboard
-              <FaArrowRight />
-            </button>
-          </div>
+              <button
+                className="btn btn-primary float-right"
+                onClick={() => setShowManageMyWomanModal(true)}
+              >
+                Go to Dashboard
+                <FaArrowRight />
+              </button>
+            </div>
+          )}
         </div>
 
         <UserFamily user={user} />

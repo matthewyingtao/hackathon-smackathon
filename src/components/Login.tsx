@@ -1,4 +1,4 @@
-import { $users } from "@/stores/user";
+import { $users, getUser } from "@/stores/user";
 import { useStore } from "@nanostores/react";
 import { useState } from "react";
 import LoginConfirmationModal from "./LoginConfirmationModal";
@@ -43,7 +43,7 @@ export const Login: React.FC = () => {
 
       {selectedUser && (
         <LoginConfirmationModal
-          user={users.find((u) => u.id === selectedUser)!}
+          user={getUser(selectedUser)!}
           show={showConfirm}
           setShow={setShowConfirm}
         />
