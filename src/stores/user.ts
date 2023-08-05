@@ -4,11 +4,13 @@ import { uuid } from "uuidv4";
 export type User = {
   id: string;
   name: string;
-  immediateFamily: string[];
+  immediateFamilyUserIds: string[];
+  occupation: string;
   isMale: boolean;
   profileImage: string;
   bio: string;
   spouse?: string;
+  openTo: UserOpenToEnum[];
 } & (
   | {
       socialClass: UserSocialClass.LOWER;
@@ -47,6 +49,12 @@ export enum UserMiddleClassRole {
 export enum UserLowerClassRole {
   PEASANT,
   SERF,
+}
+
+export enum UserOpenToEnum {
+  MARRIAGE,
+  MISTRESS,
+  JOB,
 }
 
 export const $users = atom<User[]>([]);
