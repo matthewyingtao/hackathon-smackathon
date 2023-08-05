@@ -19,7 +19,7 @@ const Feed: React.FC = () => {
       <div className="col-span-12 lg:col-span-6 space-y-2">
         <FeedWrite />
 
-        {posts.map((p) => (
+        {posts.reverse().map((p) => (
           <FeedPost key={p.id} post={p} />
         ))}
       </div>
