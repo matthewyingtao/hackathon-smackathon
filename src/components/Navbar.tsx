@@ -1,24 +1,15 @@
 import logo from "@/assets/images/logo.svg";
+import { $search } from "@/stores/misc";
 import { $currentUserId, getUser, removeCurrentUser } from "@/stores/user";
 import { useStore } from "@nanostores/react";
-import { PropsWithChildren, useState } from "react";
+import { PropsWithChildren } from "react";
 import { FaBars, FaMagnifyingGlass } from "react-icons/fa6";
 import { Link } from "wouter";
 import { navigate } from "wouter/use-location";
-import UserPicture from "./UserPicture";
-
-const dodgyAsFuckCssOverride = {
-  "--bc": "32 19% 63%",
-  "--n": "32 19% 63%",
-} as React.CSSProperties;
-
-const anotherDodgyAsFuckCssOverride = {
-  "--bc": "39 12% 44%",
-  "--n": "39 12% 44%",
-} as React.CSSProperties;
+import UserPicture from "../data/UserPicture";
 
 const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
-  const [searchVal, setSearchVal] = useState("");
+  const searchVal = useStore($search);
 
   const currentUserId = useStore($currentUserId)!;
   const currentUser = getUser(currentUserId)!;
@@ -30,11 +21,7 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
         <div className="w-full navbar container mx-auto px-3 z-10">
           <div className="navbar-start gap-4">
             <div className="flex-none lg:hidden">
-              <label
-                htmlFor="my-drawer-3"
-                className="btn btn-square btn-ghost"
-                style={{ color: "#ffffff", ...dodgyAsFuckCssOverride }}
-              >
+              <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
                 <FaBars size="20px" color="white" />
               </label>
             </div>
@@ -67,7 +54,7 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
                 <input
                   type="text"
                   value={searchVal}
-                  onChange={(e) => setSearchVal(e.currentTarget.value)}
+                  onChange={(e) => $search.set(e.currentTarget.value)}
                   className="input input-bordered w-24 md:w-auto border-muted-gold pl-10 rounded-3xl"
                   style={{
                     background: "linear-gradient(to bottom, #bdb096, #7D7463)",
@@ -86,9 +73,7 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
               ].map(({ href, ...i }) => (
                 <li key={i.text}>
                   <Link href={href}>
-                    <a style={{ color: "#ffffff", ...dodgyAsFuckCssOverride }}>
-                      {i.text}
-                    </a>
+                    <a>{i.text}</a>
                   </Link>
                 </li>
               ))}
@@ -113,26 +98,29 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
                       document.querySelector("#logo") as HTMLAnchorElement
                     ).focus()
                   }
+                  className=" text-white hover:text-dark-sandstone group"
                 >
                   <Link href={`/user/${currentUser.id}`}>
-                    <a
-                      className="justify-between"
-                      style={dodgyAsFuckCssOverride}
-                    >
+                    <a className="justify-between text-white group-hover:text-dark-sandstone">
                       profile
                       <span className="badge">New</span>
                     </a>
                   </Link>
                 </li>
                 <li
-                  style={dodgyAsFuckCssOverride}
                   onClick={() =>
                     (
                       document.querySelector("#logo") as HTMLAnchorElement
                     ).focus()
                   }
+                  className=" text-white hover:text-dark-sandstone group"
                 >
-                  <a onClick={() => removeCurrentUser()}>logout</a>
+                  <a
+                    onClick={() => removeCurrentUser()}
+                    className="text-white group-hover:text-dark-sandstone"
+                  >
+                    logout
+                  </a>
                 </li>
               </ul>
             </div>
@@ -167,14 +155,7 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
             { text: "profile", href: `/user/${currentUser.id}` },
             { text: "logout", onClick: () => removeCurrentUser() },
           ].map(({ text, href, onClick, ...args }) => {
-            const item = (
-              <a
-                style={{ color: "#ffffff", ...anotherDodgyAsFuckCssOverride }}
-                {...args}
-              >
-                {text}
-              </a>
-            );
+            const item = <a {...args}>{text}</a>;
 
             return (
               <li

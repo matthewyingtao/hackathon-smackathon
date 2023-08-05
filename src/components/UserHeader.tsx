@@ -1,7 +1,7 @@
 import { $currentUserId, User, getUser } from "@/stores/user";
-import UserPicture from "./UserPicture";
 import { displayFellowships } from "@/utils";
 import { useStore } from "@nanostores/react";
+import UserPicture from "../data/UserPicture";
 
 interface UserHeaderProps {
   user: User;

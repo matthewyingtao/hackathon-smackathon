@@ -1,12 +1,11 @@
 import FeedPost from "@/components/FeedPost";
 import UserHeader from "@/components/UserHeader";
 import { searchPosts, searchUser } from "@/shitfuckery/search";
+import { $search } from "@/stores/misc";
+import { useStore } from "@nanostores/react";
 
 const Search: React.FC = () => {
-  const location = window.location.href;
-  const searchParams = new URLSearchParams(location).values();
-
-  const query = searchParams.next().value || "";
+  const query = useStore($search);
 
   const matchedUsers = searchUser.search(query);
   const matchedPosts = searchPosts.search(query);
