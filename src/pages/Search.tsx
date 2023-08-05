@@ -1,15 +1,14 @@
 import FeedPost from "@/components/FeedPost";
 import UserHeader from "@/components/UserHeader";
 import { searchPosts, searchUser } from "@/shitfuckery/search";
+import { $search } from "@/stores/misc";
+import { useStore } from "@nanostores/react";
 
 const Search: React.FC = () => {
-  const location = window.location.href;
-  const searchParams = new URLSearchParams(location).values();
+  const query = useStore($search);
 
-  const query = searchParams.next().value || "";
-
-  const matchedPosts = searchPosts.search(query);
   const matchedUsers = searchUser.search(query);
+  const matchedPosts = searchPosts.search(query);
 
   return (
     <div className="container mx-auto p-3 grid gap-x-3 gap-y-2 grid-cols-12">

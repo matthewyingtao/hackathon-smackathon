@@ -1,11 +1,11 @@
-import { Fragment } from "react";
 import {
   User,
   UserImmediateFamilyRelationshipEnum,
   getUser,
 } from "@/stores/user";
-import UserPicture from "./UserPicture";
+import { Fragment } from "react";
 import { Link } from "wouter";
+import UserPicture from "../data/UserPicture";
 
 interface UserFamilyProps {
   user: User;

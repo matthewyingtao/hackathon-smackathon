@@ -1,9 +1,9 @@
 import { $guilds } from "@/stores/guilds";
-import { useStore } from "@nanostores/react";
-import { Link } from "wouter";
-import UserPicture from "./UserPicture";
 import { $currentUserId, updateUser, useUser } from "@/stores/user";
+import { useStore } from "@nanostores/react";
 import { FaPlus } from "react-icons/fa6";
+import { Link } from "wouter";
+import UserPicture from "../data/UserPicture";
 
 const FeedGuildsSidebar: React.FC = () => {
   const currentUserId = useStore($currentUserId)!;
