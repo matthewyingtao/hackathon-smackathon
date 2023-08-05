@@ -8,8 +8,8 @@ const Search: React.FC = () => {
 
   const query = searchParams.next().value || "";
 
-  const matchedPosts = searchPosts.search(query);
   const matchedUsers = searchUser.search(query);
+  const matchedPosts = searchPosts.search(query);
 
   return (
     <div className="container mx-auto p-3 grid gap-x-3 gap-y-2 grid-cols-12">
