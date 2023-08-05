@@ -1,17 +1,49 @@
-import { $currentUserId, User, getUser } from "@/stores/user";
+import {
+  $currentUserId,
+  User,
+  UserImmediateFamilyRelationshipEnum,
+  getUser,
+} from "@/stores/user";
 import UserPicture from "./UserPicture";
 import { displayFellowships } from "@/utils";
 import { useStore } from "@nanostores/react";
+import { useState } from "react";
 
 interface UserHeaderProps {
   user: User;
 }
 
 const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
-  const familyUserIds = new Set(user.immediateFamily.map((obj) => obj.userId));
+  const [familyUserIds, setFamilyUserIds] = useState(
+    new Set(user.immediateFamily.map((obj) => obj.userId)),
+  );
 
   const currrentUserId = useStore($currentUserId)!;
   const isCurrentUser = currrentUserId === user.id;
+
+  const handleConnectAsFamily = () => {
+    if (
+      user.immediateFamily
+        .map((element) => element.userId)
+        .includes($currentUserId.get()!)
+    )
+      return;
+    user.immediateFamily.push({
+      userId: $currentUserId.get()!,
+      relationship: UserImmediateFamilyRelationshipEnum.CHILD,
+    });
+    getUser($currentUserId.get()!)!.immediateFamily.push({
+      userId: user.id,
+      relationship: UserImmediateFamilyRelationshipEnum.PARENT,
+    });
+    const tempFamilyUserIds = new Set([
+      ...familyUserIds.values(),
+      $currentUserId.get()!,
+    ]);
+    setFamilyUserIds(tempFamilyUserIds);
+    console.log(familyUserIds);
+    return;
+  };
 
   return (
     <div className="card w-full bg-sandstone shadow-xl">
@@ -84,10 +116,12 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
           <div className="mb-2 flex gap-2">
             {
               <div className="mb-2">
-                {familyUserIds.has(user.id) ? (
+                {familyUserIds.has($currentUserId.get()!) ? (
                   <button className="btn">You are Family!</button>
                 ) : (
-                  <button className="btn">Connect as Family</button>
+                  <button className="btn" onClick={handleConnectAsFamily}>
+                    Connect as Family
+                  </button>
                 )}
               </div>
             }
