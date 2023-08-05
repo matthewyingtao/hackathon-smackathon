@@ -3,7 +3,7 @@ import { FaMagnifyingGlass, FaBars } from "react-icons/fa6";
 import logo from "@/assets/images/logo.svg";
 import { Link } from "wouter";
 import UserPicture from "./UserPicture";
-import { $users } from "@/stores/user";
+import { $users, removeCurrentUser } from "@/stores/user";
 
 const dodgyAsFuckCssOverride = {
   "--bc": "32 19% 63%",
@@ -94,7 +94,7 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
                   </Link>
                 </li>
                 <li style={dodgyAsFuckCssOverride}>
-                  <a>logout</a>
+                  <a onClick={() => removeCurrentUser()}>logout</a>
                 </li>
               </ul>
             </div>
@@ -116,10 +116,18 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
             </a>
           </Link>
 
-          {["connections", "guilds", "profile", "logout"].map((i) => (
-            <li key={i}>
-              <a style={{ color: "#ffffff", ...anotherDodgyAsFuckCssOverride }}>
-                {i}
+          {[
+            { text: "connections" },
+            { text: "guilds" },
+            { text: "profile" },
+            { text: "logout", onClick: () => removeCurrentUser() },
+          ].map(({ text, ...args }) => (
+            <li key={text}>
+              <a
+                style={{ color: "#ffffff", ...anotherDodgyAsFuckCssOverride }}
+                {...args}
+              >
+                {text}
               </a>
             </li>
           ))}

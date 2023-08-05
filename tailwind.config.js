@@ -13,7 +13,6 @@ export default {
       sandstone: "#B2A18D",
       "dark-sandstone": "#8F7A54",
       "muted-gold": "#7D7463",
-      "dark-gold": "#8F7A54",
       "woman-pink": "#ff91af",
       white: "#FFFFFF",
     },

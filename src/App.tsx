@@ -1,26 +1,33 @@
 import { Route, Link } from "wouter";
+import Login from "@/components/Login";
 import Navbar from "@/components/Navbar";
 import User from "@/pages/User";
 import { useStore } from "@nanostores/react";
-import { $users } from "@/stores/user";
+import { $currentUser, $users } from "@/stores/user";
 
 const App: React.FC = () => {
   const users = useStore($users);
+  const currentUser = useStore($currentUser);
+
   return (
     <div className="font-body bg-muted-gold min-h-screen">
-      <Navbar>
-        <Route path="/">
-          {users.map((u) => (
-            <Link key={u.id} href={u.id}>
-              {u.name}
-            </Link>
-          ))}
-        </Route>
+      {currentUser === null ? (
+        <Login></Login>
+      ) : (
+        <Navbar>
+          <Route path="/">
+            {users.map((u) => (
+              <Link key={u.id} href={u.id}>
+                {u.name}
+              </Link>
+            ))}
+          </Route>
 
-        <Route path="/:userId">
-          {(params) => <User userId={params.userId} />}
-        </Route>
-      </Navbar>
+          <Route path="/:userId">
+            {(params) => <User userId={params.userId} />}
+          </Route>
+        </Navbar>
+      )}
     </div>
   );
 };

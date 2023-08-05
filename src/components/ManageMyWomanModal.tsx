@@ -28,12 +28,12 @@ const ManageMyWomanModal: React.FC<ManageMyWomanModalProps> = ({
   return (
     <dialog ref={ref} className="modal modal-bottom sm:modal-middle">
       <div
-        className="modal-box"
+        className="modal-box bg-sandstone"
         style={{
           minWidth: "75%",
         }}
       >
-        <h2 className="card-title font-accent text-4xl mb-3">
+        <h2 className="card-title font-accent text-5xl mb-3">
           ManageMyWoman™
         </h2>
 

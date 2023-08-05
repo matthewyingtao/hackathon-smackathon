@@ -1,5 +1,4 @@
 import { atom } from "nanostores";
-import { v4 as uuid } from "uuid";
 
 export interface UserImmediateFamily {
   userId: string;
@@ -72,8 +71,7 @@ export enum UserOpenTo {
 
 export const $users = atom<User[]>([]);
 
-export const addUser = (user: User) =>
-  $users.set([...$users.get(), user]);
+export const addUser = (user: User) => $users.set([...$users.get(), user]);
 
 export const removeUser = (id: string) =>
   $users.set($users.get().filter((user) => user.id !== id));
@@ -81,6 +79,10 @@ export const removeUser = (id: string) =>
 export const getUser = (id: string) =>
   $users.get().find((user) => user.id === id);
 
-export const addFamilyConnection = (id: string) => {
+export const addFamilyConnection = (id: string) => {};
 
-}
+export const $currentUser = atom<string | null>(null);
+
+export const setCurrentUser = (id: string) => $currentUser.set(id);
+
+export const removeCurrentUser = () => $currentUser.set(null);
