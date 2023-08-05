@@ -1,10 +1,22 @@
 import { atom } from "nanostores";
 import { v4 as uuid } from "uuid";
 
+export interface UserImmediateFamily {
+  userId: string;
+  relationship: UserImmediateFamilyRelationshipEnum;
+}
+
+export enum UserImmediateFamilyRelationshipEnum {
+  FATHER,
+  MOTHER,
+  SON,
+  DAUGHTER,
+}
+
 export type User = {
   id: string;
   name: string;
-  immediateFamilyUserIds: string[];
+  immediateFamily: UserImmediateFamily[];
   occupation: string;
   isMale: boolean;
   profileImage: string;
@@ -68,3 +80,7 @@ export const removeUser = (id: string) =>
 
 export const getUser = (id: string) =>
   $users.get().find((user) => user.id === id);
+
+export const addFamilyConnection = (id: string) => {
+
+}

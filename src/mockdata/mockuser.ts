@@ -1,5 +1,6 @@
 import {
   User,
+  UserImmediateFamilyRelationshipEnum,
   UserOpenTo,
   UserSocialClass,
   UserUpperClassRole,
@@ -8,7 +9,10 @@ import {
 export const mockUser: User = {
   id: "123",
   name: "Marie Antoinette",
-  immediateFamilyUserIds: ["2"],
+  immediateFamily: [{
+    userId: "2",
+    relationship: UserImmediateFamilyRelationshipEnum.FATHER,
+  },],
   occupation: "Queen consort of King Louis XVI of France | Ex-Archduchess",
   isMale: false,
   coverImage: "",
