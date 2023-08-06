@@ -8,6 +8,7 @@ import { $currentUserId } from "@/stores/user";
 import { useStore } from "@nanostores/react";
 import { AnimatePresence } from "framer-motion";
 import { Route, Switch, useLocation } from "wouter";
+import InstallButton from "./components/InstallButton";
 
 const App: React.FC = () => {
   const currentUser = useStore($currentUserId);
@@ -15,6 +16,7 @@ const App: React.FC = () => {
 
   return (
     <div className="font-body bg-muted-gold min-h-screen text-[hsl(215_28%_17%)]">
+      <InstallButton />
       {currentUser === null ? (
         <Login></Login>
       ) : (

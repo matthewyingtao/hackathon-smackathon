@@ -9,6 +9,24 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
+      manifest: {
+        name: "LinkedKin",
+        short_name: "LinkedKin",
+        theme_color: "#7D7463",
+        background_color: "#7D7463",
+        icons: [
+          {
+            src: "/icons/icon-192x192.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "/icons/icon-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+          },
+        ],
+      },
       // devOptions: {
       //   enabled: true,
       // },
