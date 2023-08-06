@@ -20,7 +20,7 @@ const Feed: React.FC = () => {
       initial="initial"
       animate="animate"
       transition={{ duration: 1, type: "spring", bounce: 0 }}
-      className="container mx-auto p-3 grid gap-x-3 grid-cols-12 items-start"
+      className="container mx-auto px-3 lg:px-12 py-8 pb-20 grid gap-x-3 grid-cols-12 items-start"
     >
       <FeedUserCard user={currentUser} />
 

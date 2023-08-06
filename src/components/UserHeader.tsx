@@ -4,12 +4,13 @@ import {
   UserImmediateFamilyRelationshipEnum,
   getUser,
 } from "@/stores/user";
-import UserPicture from "./UserPicture";
 import { RunSeparationBFS, displayFellowships } from "@/utils";
 import { useStore } from "@nanostores/react";
-import CallModal from "./CallModal";
 import { useState } from "react";
 import { FaPlus, FaUserGroup } from "react-icons/fa6";
+import Florish from "../assets/images/florish.png";
+import CallModal from "./CallModal";
+import UserPicture from "./UserPicture";
 import UserStatus from "./UserStatus";
 
 interface UserHeaderProps {
@@ -53,15 +54,19 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
 
   return (
     <>
-      <div className="card w-full bg-sandstone shadow-xl">
-        <figure className="h-48">
+      <div className="relative card w-full bg-sandstone shadow-xl overflow-hidden">
+        <img
+          src={Florish}
+          alt=""
+          className="absolute bottom-4 right-4 w-[40%] opacity-50"
+        />
+        <figure className="h-48 overflow-clip">
           <img
             src={user.coverImage}
             alt={`Cover image for ${user.name}`}
             className="w-full"
             draggable="false"
           />
-
           <UserStatus openTo={openTo} size="160px" />
         </figure>
 

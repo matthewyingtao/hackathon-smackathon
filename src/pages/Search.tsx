@@ -18,7 +18,7 @@ const Search: React.FC = () => {
       initial="initial"
       animate="animate"
       transition={{ duration: 1, type: "spring", bounce: 0 }}
-      className="container mx-auto p-3 grid gap-x-3 gap-y-2 grid-cols-12"
+      className="container mx-auto px-3 lg:px-12 py-8 pb-20 grid gap-x-3 gap-y-2 grid-cols-12"
     >
       <div className="col-span-12 lg:col-span-8">
         <div>
