@@ -149,7 +149,9 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
                     case -1: {
                       return "You are not related to this user, no marriage for you";
                     }
-                    case 0:
+                    case 0: {
+                      return "";
+                    }
                     case 1: {
                       return "";
                     }

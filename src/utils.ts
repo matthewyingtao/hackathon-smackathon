@@ -28,7 +28,7 @@ interface searchNode {
 export const RunSeparationBFS = (
   userID: string,
   searchForID: string,
-): string => {
+): number => {
   const searchedUsers = new Set<string>();
   const queue: searchNode[] = [{ id: userID, distance: 0 }];
 
@@ -36,7 +36,7 @@ export const RunSeparationBFS = (
     const { id, distance } = queue.shift()!;
 
     if (id === searchForID) {
-      return distance.toString();
+      return distance;
     }
 
     if (searchedUsers.has(id)) {
