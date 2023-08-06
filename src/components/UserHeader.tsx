@@ -84,7 +84,6 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
         </div>
 
         <div className="card-body block pt-12">
-          <div className="float-right">France</div>
           <div className="mb-2">
             <h2 className="card-title font-display text-bold text-3xl">
               {user.name}
