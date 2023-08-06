@@ -168,8 +168,8 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
           </Link>
 
           {[
-            { text: "connections" },
-            { text: "guilds" },
+            { text: "connections", href: "/connections" },
+            { text: "guilds", href: "/guilds" },
             { text: "profile", href: `/user/${currentUser.id}` },
             { text: "logout", onClick: () => removeCurrentUser() },
           ].map(({ text, href, onClick, ...args }) => {
