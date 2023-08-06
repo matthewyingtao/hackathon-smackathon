@@ -8,6 +8,16 @@ import { Link } from "wouter";
 import { navigate } from "wouter/use-location";
 import UserPicture from "./UserPicture";
 
+const dodgyAsFuckCssOverride = {
+  "--bc": "32 19% 63%",
+  "--n": "32 19% 63%",
+} as React.CSSProperties;
+
+const anotherDodgyAsFuckCssOverride = {
+  "--bc": "39 12% 44%",
+  "--n": "39 12% 44%",
+} as React.CSSProperties;
+
 const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
   const searchVal = useStore($search);
 
@@ -21,7 +31,11 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
         <div className="w-full navbar container mx-auto px-3 z-10">
           <div className="navbar-start gap-4">
             <div className="flex-none lg:hidden">
-              <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
+              <label
+                htmlFor="my-drawer-3"
+                className="btn btn-square btn-ghost"
+                style={{ color: "#ffffff", ...dodgyAsFuckCssOverride }}
+              >
                 <FaBars size="20px" color="white" />
               </label>
             </div>
@@ -73,7 +87,9 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
               ].map(({ href, ...i }) => (
                 <li key={i.text}>
                   <Link href={href}>
-                    <a>{i.text}</a>
+                    <a style={{ color: "#ffffff", ...dodgyAsFuckCssOverride }}>
+                      {i.text}
+                    </a>
                   </Link>
                 </li>
               ))}
@@ -98,29 +114,26 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
                       document.querySelector("#logo") as HTMLAnchorElement
                     ).focus()
                   }
-                  className=" text-white hover:text-dark-sandstone group"
                 >
                   <Link href={`/user/${currentUser.id}`}>
-                    <a className="justify-between text-white group-hover:text-dark-sandstone">
+                    <a
+                      className="justify-between"
+                      style={dodgyAsFuckCssOverride}
+                    >
                       profile
                       <span className="badge">New</span>
                     </a>
                   </Link>
                 </li>
                 <li
+                  style={dodgyAsFuckCssOverride}
                   onClick={() =>
                     (
                       document.querySelector("#logo") as HTMLAnchorElement
                     ).focus()
                   }
-                  className=" text-white hover:text-dark-sandstone group"
                 >
-                  <a
-                    onClick={() => removeCurrentUser()}
-                    className="text-white group-hover:text-dark-sandstone"
-                  >
-                    logout
-                  </a>
+                  <a onClick={() => removeCurrentUser()}>logout</a>
                 </li>
               </ul>
             </div>
@@ -155,7 +168,14 @@ const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
             { text: "profile", href: `/user/${currentUser.id}` },
             { text: "logout", onClick: () => removeCurrentUser() },
           ].map(({ text, href, onClick, ...args }) => {
-            const item = <a {...args}>{text}</a>;
+            const item = (
+              <a
+                style={{ color: "#ffffff", ...anotherDodgyAsFuckCssOverride }}
+                {...args}
+              >
+                {text}
+              </a>
+            );
 
             return (
               <li

@@ -1,6 +1,6 @@
+import maProfile from "@/assets/images/pfps/ma-profile.jpg";
 import { Guild } from "@/stores/guilds";
 import { toDataUrl } from "@/utils";
-import maProfile from "@/assets/images/ma-profile.jpg";
 
 export const guilds: Guild[] = [
   {
