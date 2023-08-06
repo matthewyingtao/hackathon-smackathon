@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { FaInfo } from "react-icons/fa6";
 
 const InstallButton: React.FC = () => {
+  const [hide, setHide] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState<Event | null>(null);
 
   useEffect(() => {
@@ -33,9 +34,9 @@ const InstallButton: React.FC = () => {
 
   return (
     <>
-      {deferredPrompt && (
+      {deferredPrompt && !hide && (
         <div
-          className="alert fixed bottom-4 mx-4"
+          className="alert fixed bottom-4 mx-4 z-30"
           style={{
             width: "calc(100% - 2rem)",
           }}
@@ -44,7 +45,9 @@ const InstallButton: React.FC = () => {
 
           <span>Hath thou the LinkedKin mobile application?</span>
           <div className="flex gap-x-2">
-            <button className="btn btn-sm">Ye</button>
+            <button className="btn btn-sm" onClick={() => setHide(true)}>
+              Ye
+            </button>
             <button
               className="btn btn-sm btn-primary"
               onClick={handleInstallClick}
