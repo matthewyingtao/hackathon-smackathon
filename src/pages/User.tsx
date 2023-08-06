@@ -51,7 +51,7 @@ const User: React.FC<UserProps> = ({ userId }) => {
               <span>This is your {isDaughter ? "daughter" : "wife"}.</span>
 
               <button
-                className="btn btn-primary float-right"
+                className="btn float-right"
                 onClick={() => setShowManageMyWomanModal(true)}
               >
                 Go to Dashboard
