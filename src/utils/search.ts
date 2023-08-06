@@ -9,6 +9,7 @@ const postsWithUsers = posts.map((post) => {
 export const searchPosts = new Fuse(postsWithUsers, {
   keys: ["title", "body", "name"],
   threshold: 0.1,
+  ignoreLocation: true,
 });
 
 export const searchUser = new Fuse(users, {
