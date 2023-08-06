@@ -5,7 +5,7 @@ import {
   getUser,
 } from "@/stores/user";
 import UserPicture from "./UserPicture";
-import { displayFellowships } from "@/utils";
+import { RunSeparationBFS, displayFellowships } from "@/utils";
 import { useStore } from "@nanostores/react";
 import CallModal from "./CallModal";
 import { useState } from "react";
@@ -122,21 +122,50 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
             </div>
           </div>
           {!isCurrentUser && (
-            <div className="mb-2 flex gap-2 flex-wrap">
-              {familyUserIds.has($currentUserId.get()!) ? (
-                <button className="btn">You are Family!</button>
-              ) : (
-                <button className="btn" onClick={handleConnectAsFamily}>
-                  <FaPlus />
-                  Connect as Family
-                </button>
-              )}
+            <>
+              <div className="mb-2 flex gap-2 flex-wrap">
+                {familyUserIds.has($currentUserId.get()!) ? (
+                  <button className="btn">You are Family!</button>
+                ) : (
+                  <button className="btn" onClick={handleConnectAsFamily}>
+                    <FaPlus />
+                    Connect as Family
+                  </button>
+                )}
 
-              <button className="btn" onClick={() => setShowCallModal(true)}>
-                <FaUserGroup />
-                Visual Rendezvous
-              </button>
-            </div>
+                <button className="btn" onClick={() => setShowCallModal(true)}>
+                  <FaUserGroup />
+                  Visual Rendezvous
+                </button>
+              </div>
+              <div>
+                {(() => {
+                  const distance: number = RunSeparationBFS(
+                    $currentUserId.get(),
+                    user.id,
+                  );
+
+                  switch (distance) {
+                    case -1: {
+                      return "You are not related to this user, no marriage for you";
+                    }
+                    case 0: {
+                      return "";
+                    }
+                    case 1: {
+                      return "";
+                    }
+                    default: {
+                      return (
+                        "You are separated from this user by " +
+                        distance +
+                        " degrees of separation"
+                      );
+                    }
+                  }
+                })()}
+              </div>
+            </>
           )}
         </div>
       </div>
