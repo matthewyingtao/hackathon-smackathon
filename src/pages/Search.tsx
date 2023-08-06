@@ -25,7 +25,7 @@ const Search: React.FC = () => {
           <FeedPost post={item} />
         ))}
       </div>
-      <div className="space-y-8 min-w-[30ch]">
+      <div className="space-y-8 min-w-[35ch]">
         {matchedUsers.map(({ item }) => (
           <UserHeader user={item} />
         ))}
