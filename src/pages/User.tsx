@@ -47,7 +47,7 @@ const User: React.FC<UserProps> = ({ userId }) => {
         initial="initial"
         animate="animate"
         transition={{ duration: 1, type: "spring", bounce: 0 }}
-        className="container mx-auto px-3 lg:px-12 py-8 pb-20 grid gap-x-3 gap-y-2 grid-cols-12"
+        className="container mx-auto px-4 lg:px-12 pb-20 grid gap-4 grid-cols-12"
       >
         <div className="col-span-12 lg:col-span-8">
           <UserHeader user={user} />

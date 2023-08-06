@@ -18,7 +18,7 @@ const Search: React.FC = () => {
       initial="initial"
       animate="animate"
       transition={{ duration: 1, type: "spring", bounce: 0 }}
-      className="container flex flex-row justify-center mx-auto px-3 lg:px-12 py-8 pb-20 gap-x-12 gap-y-2"
+      className="container flex flex-row justify-center mx-auto px-4 lg:px-12 pb-20 gap-4"
     >
       <div className="space-y-8">
         {matchedPosts.map(({ item }) => (

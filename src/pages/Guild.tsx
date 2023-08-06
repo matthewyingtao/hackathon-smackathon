@@ -58,7 +58,7 @@ const GuildPage: React.FC<GuildProps> = ({ guildId }) => {
         )}
       </motion.div>
 
-      <div className="text-center text-white px-3 py-6">
+      <div className="text-center text-white px-4 py-6">
         <div className="mb-2">Scroll down to enter</div>
         <FaArrowDown className="mx-auto" />
       </div>
