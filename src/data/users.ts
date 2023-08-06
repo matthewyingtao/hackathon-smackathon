@@ -6,6 +6,9 @@ import Louis from "@/assets/images/pfps/louis.jpg";
 import maProfile from "@/assets/images/pfps/ma-profile.jpg";
 import Marie from "@/assets/images/pfps/marie.jpg";
 import Victoria from "@/assets/images/pfps/victoria.jpg";
+import Shakespeare from "@/assets/images/pfps/shakespeare.jpg";
+import Ada from "@/assets/images/pfps/ada.jpg";
+import Dicken from "@/assets/images/pfps/dicken.jpg";
 import {
   User,
   UserImmediateFamilyRelationshipEnum,
@@ -165,7 +168,7 @@ export const users: User[] = [
     immediateFamily: [],
     occupation: "Playwright and Poet @ England",
     isMale: true,
-    profileImage: await toDataUrl(Victoria),
+    profileImage: await toDataUrl(Shakespeare),
     coverImage: await toDataUrl(maCover),
     bio: "I am William Shakespeare, the greatest playwright and poet in English literature. My works, including plays like Romeo and Juliet, Hamlet, and Macbeth, have left a lasting impact on the world of literature and theater. Join me in exploring the beauty and power of words!",
     marriageRequestIds: [],
@@ -180,7 +183,7 @@ export const users: User[] = [
     immediateFamily: [],
     occupation: "Mathematician and Writer @ England",
     isMale: false,
-    profileImage: await toDataUrl(Victoria),
+    profileImage: await toDataUrl(Ada),
     coverImage: await toDataUrl(maCover),
     bio: "I am Ada Lovelace, a mathematician and writer. I am known for my work on Charles Babbage's early mechanical general-purpose computer, the Analytical Engine. My notes on the engine include what is now recognized as the world's first algorithm intended for implementation on a machine, making me the first computer programmer.",
     marriageRequestIds: [],
@@ -195,7 +198,7 @@ export const users: User[] = [
     immediateFamily: [],
     occupation: "Novelist @ England",
     isMale: true,
-    profileImage: await toDataUrl(Victoria),
+    profileImage: await toDataUrl(Dicken),
     coverImage: await toDataUrl(maCover),
     bio: "I am Charles Dickens, a renowned novelist known for my works such as 'Oliver Twist,' 'A Tale of Two Cities,' and 'Great Expectations.' My writings shed light on social issues and inequalities of the Victorian era. Connect with me to delve into the world of vivid characters and intricate plots.",
     marriageRequestIds: [],
