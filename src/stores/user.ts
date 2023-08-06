@@ -22,6 +22,7 @@ export type User = {
   profileImage: string;
   coverImage: string;
   bio: string;
+  marriageRequestIds: string[];
   openTo: UserOpenTo[];
   followingGuildIds: string[];
 } & (

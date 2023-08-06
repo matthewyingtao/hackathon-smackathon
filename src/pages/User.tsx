@@ -5,10 +5,11 @@ import {
   $currentUserId,
   UserImmediateFamilyRelationshipEnum,
   getUser,
+  useUser,
 } from "@/stores/user";
 import { FaInfo, FaArrowRight } from "react-icons/fa6";
 import { useState } from "react";
-import ManageMyWomanModal from "@/components/ManageMyWomanModal";
+import DaughterDashboardModal from "@/components/DaughterDashboardModal";
 import { useStore } from "@nanostores/react";
 
 interface UserProps {
@@ -18,7 +19,7 @@ interface UserProps {
 const User: React.FC<UserProps> = ({ userId }) => {
   const [showManageMyWomanModal, setShowManageMyWomanModal] = useState(false);
 
-  const user = getUser(userId);
+  const user = useUser(userId);
   const currentUserId = useStore($currentUserId)!;
   const currentUser = getUser(currentUserId)!;
   if (!user) return <h1>User not found</h1>;
@@ -47,9 +48,7 @@ const User: React.FC<UserProps> = ({ userId }) => {
             <div className="alert bg-woman-pink border-woman-pink text-white mt-2">
               <FaInfo />
 
-              <span>
-                This woman is your {isDaughter ? "daughter" : "wife"}.
-              </span>
+              <span>This is your {isDaughter ? "daughter" : "wife"}.</span>
 
               <button
                 className="btn btn-primary float-right"
@@ -67,7 +66,8 @@ const User: React.FC<UserProps> = ({ userId }) => {
         <UserBio user={user} />
       </div>
 
-      <ManageMyWomanModal
+      <DaughterDashboardModal
+        user={user}
         show={showManageMyWomanModal}
         setShow={setShowManageMyWomanModal}
       />

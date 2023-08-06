@@ -1,6 +1,6 @@
 import FeedPost from "@/components/FeedPost";
 import UserHeader from "@/components/UserHeader";
-import { searchPosts, searchUser } from "@/shitfuckery/search";
+import { searchPosts, searchUser } from "@/utils/search";
 import { $search } from "@/stores/misc";
 import { useStore } from "@nanostores/react";
 
