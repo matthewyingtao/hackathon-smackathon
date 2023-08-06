@@ -25,8 +25,7 @@ const InstallButton: React.FC = () => {
   const handleInstallClick = () => {
     if (deferredPrompt) {
       (deferredPrompt as any).prompt();
-      (deferredPrompt as any).userChoice.then((choiceResult: any) => {
-        console.log("choiceResult", choiceResult);
+      (deferredPrompt as any).userChoice.then(() => {
         setDeferredPrompt(null);
       });
     }

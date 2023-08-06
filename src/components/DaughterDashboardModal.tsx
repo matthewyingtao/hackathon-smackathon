@@ -24,8 +24,6 @@ const DaughterDashboardModal: React.FC<ManageMyWomanModalProps> = ({
   const ref = useRef<HTMLDialogElement>(null);
   const users = useStore($users);
 
-  console.log(show);
-
   useEffect(() => {
     if (ref.current === null) return;
     if (show) {

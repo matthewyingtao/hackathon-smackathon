@@ -2,9 +2,9 @@ import logo from "@/assets/images/logo.svg";
 import { $search } from "@/stores/misc";
 import { $currentUserId, getUser, removeCurrentUser } from "@/stores/user";
 import { useStore } from "@nanostores/react";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useEffect } from "react";
 import { FaBars, FaMagnifyingGlass } from "react-icons/fa6";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { navigate } from "wouter/use-location";
 import UserPicture from "./UserPicture";
 
@@ -20,9 +20,14 @@ const anotherDodgyAsFuckCssOverride = {
 
 const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
   const searchVal = useStore($search);
+  const [pathname] = useLocation();
 
   const currentUserId = useStore($currentUserId)!;
   const currentUser = getUser(currentUserId)!;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <div className="drawer">
