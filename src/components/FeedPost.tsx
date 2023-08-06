@@ -1,3 +1,4 @@
+import { $search } from "@/stores/misc";
 import { Post } from "@/stores/posts";
 import { getUser } from "@/stores/user";
 import ReactMarkdown from "react-markdown";
@@ -16,8 +17,7 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
 
     return text.replace(
       hashtagRegex,
-      (match: string, hashtag: string) =>
-        `[${match}](/search/?q=${encodeURIComponent(hashtag)})`,
+      (match: string, _hashtag: string) => `[${match}](/search)`,
     );
   };
 
@@ -58,7 +58,13 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
           <ReactMarkdown
             components={{
               a: ({ href, children, ...props }) => (
-                <Link href={href as string} {...props}>
+                <Link
+                  href={href as string}
+                  onClick={() => {
+                    $search.set((children[0] as string).slice(1));
+                  }}
+                  {...props}
+                >
                   <a className="link link-primary">{children}</a>
                 </Link>
               ),
