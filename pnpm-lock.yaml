@@ -1,7 +1,7 @@
 lockfileVersion: '6.0'
 
 settings:
-  autoInstallPeers: false
+  autoInstallPeers: true
   excludeLinksFromLockfile: false
 
 dependencies:
@@ -96,7 +96,7 @@ devDependencies:
     version: 4.4.5(@types/node@20.4.7)
   vite-plugin-pwa:
     specifier: ^0.16.4
-    version: 0.16.4(vite@4.4.5)
+    version: 0.16.4(vite@4.4.5)(workbox-build@7.0.0)(workbox-window@7.0.0)
 
 packages:
 
@@ -4857,11 +4857,13 @@ packages:
       vfile-message: 3.1.4
     dev: false
 
-  /vite-plugin-pwa@0.16.4(vite@4.4.5):
+  /vite-plugin-pwa@0.16.4(vite@4.4.5)(workbox-build@7.0.0)(workbox-window@7.0.0):
     resolution: {integrity: sha512-lmwHFIs9zI2H9bXJld/zVTbCqCQHZ9WrpyDMqosICDV0FVnCJwniX1NMDB79HGTIZzOQkY4gSZaVTJTw6maz/Q==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       vite: ^3.1.0 || ^4.0.0
+      workbox-build: ^7.0.0
+      workbox-window: ^7.0.0
     dependencies:
       debug: 4.3.4
       fast-glob: 3.3.1
@@ -4870,7 +4872,6 @@ packages:
       workbox-build: 7.0.0
       workbox-window: 7.0.0
     transitivePeerDependencies:
-      - '@types/babel__core'
       - supports-color
     dev: true
 
