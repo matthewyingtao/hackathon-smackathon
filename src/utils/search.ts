@@ -14,4 +14,5 @@ export const searchPosts = new Fuse(postsWithUsers, {
 export const searchUser = new Fuse(users, {
   keys: ["name"],
   threshold: 0.0,
+  ignoreLocation: true,
 });
