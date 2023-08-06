@@ -18,19 +18,17 @@ const Search: React.FC = () => {
       initial="initial"
       animate="animate"
       transition={{ duration: 1, type: "spring", bounce: 0 }}
-      className="container mx-auto p-3 grid gap-x-3 gap-y-2 grid-cols-12"
+      className="container flex flex-row justify-center mx-auto p-3 gap-x-12 gap-y-2"
     >
-      <div className="col-span-12 lg:col-span-8">
-        <div>
-          {matchedUsers.map(({ item }) => (
-            <UserHeader user={item} />
-          ))}
-        </div>
-        <div>
-          {matchedPosts.map(({ item }) => (
-            <FeedPost post={item} />
-          ))}
-        </div>
+      <div className="space-y-8">
+        {matchedPosts.map(({ item }) => (
+          <FeedPost post={item} />
+        ))}
+      </div>
+      <div className="space-y-8 min-w-[30ch]">
+        {matchedUsers.map(({ item }) => (
+          <UserHeader user={item} />
+        ))}
       </div>
     </motion.div>
   );
