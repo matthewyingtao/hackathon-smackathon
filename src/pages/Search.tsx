@@ -29,7 +29,13 @@ const Search: React.FC = () => {
       <div className="space-y-8 flex-[2_1_25ch]">
         {matchedUsers.map(({ item }) => (
           <Link href={`/user/${item.id}`}>
-            <a href="">
+            <a
+              onClick={(e) => {
+                if (e.currentTarget.classList.contains("btn"))
+                  e.preventDefault();
+                e.stopPropagation();
+              }}
+            >
               <UserHeader user={item} />
             </a>
           </Link>
