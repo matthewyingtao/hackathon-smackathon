@@ -11,6 +11,7 @@ import CallModal from "./CallModal";
 import { useState } from "react";
 import { FaPlus, FaUserGroup } from "react-icons/fa6";
 import UserStatus from "./UserStatus";
+import { useEffect } from "react";
 
 interface UserHeaderProps {
   user: User;
@@ -19,9 +20,12 @@ interface UserHeaderProps {
 const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
   const [showCallModal, setShowCallModal] = useState(false);
 
-  const [familyUserIds, setFamilyUserIds] = useState(
-    new Set(user.immediateFamily.map((obj) => obj.userId)),
-  );
+  const [familyUserIds, setFamilyUserIds] = useState(new Set<number>(null));
+
+  useEffect(() => {
+    // This is called twice on page load, could fix later
+    setFamilyUserIds(new Set(user.immediateFamily.map((obj) => obj.userId)));
+  }, [user]);
 
   const currrentUserId = useStore($currentUserId)!;
   const isCurrentUser = currrentUserId === user.id;
