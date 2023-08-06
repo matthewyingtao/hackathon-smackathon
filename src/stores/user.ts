@@ -67,7 +67,7 @@ export enum UserLowerClassRole {
 export enum UserOpenTo {
   MARRIAGE,
   MISTRESS,
-  JOB,
+  WORK,
 }
 
 export const $users = atom<User[]>([]);

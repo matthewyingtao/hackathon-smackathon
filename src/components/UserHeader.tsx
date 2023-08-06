@@ -10,6 +10,7 @@ import { useStore } from "@nanostores/react";
 import CallModal from "./CallModal";
 import { useState } from "react";
 import { FaPlus, FaUserGroup } from "react-icons/fa6";
+import UserStatus from "./UserStatus";
 
 interface UserHeaderProps {
   user: User;
@@ -49,6 +50,10 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
     return;
   };
 
+  const openTo = user.openTo[0];
+
+  console.log(user, openTo);
+
   return (
     <>
       <div className="card w-full bg-sandstone shadow-xl">
@@ -59,6 +64,8 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
             className="w-full"
             draggable="false"
           />
+
+          <UserStatus openTo={openTo} size="160px" />
         </figure>
 
         <div className="absolute top-24 left-8">

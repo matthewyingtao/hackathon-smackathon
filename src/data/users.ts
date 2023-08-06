@@ -38,7 +38,7 @@ export const users: User[] = [
     profileImage: await toDataUrl(maProfile),
     coverImage: await toDataUrl(maCover),
     bio: "Marie Antoinette, the Queen of France, is renowned for her unmatched beauty, charm, and elegance. Her regal poise and impeccable fashion sense made her a trendsetter at the French court. Beyond her physical allure, she exhibited an inner grace and devotion to her family and country, endearing her to the common people. Her legacy as a woman of beauty, grace, and nobility continues to inspire generations to come.",
-    openTo: [UserOpenTo.JOB],
+    openTo: [UserOpenTo.WORK],
     socialClass: UserSocialClass.UPPER,
     role: UserUpperClassRole.MONARCH,
     followingGuildIds: [],
@@ -54,7 +54,7 @@ export const users: User[] = [
     bio: "I'm a king, but I'm also a simp.",
     socialClass: UserSocialClass.UPPER,
     role: UserUpperClassRole.MONARCH,
-    openTo: [UserOpenTo.MARRIAGE, UserOpenTo.MISTRESS],
+    openTo: [UserOpenTo.MISTRESS],
     followingGuildIds: [],
   },
   {

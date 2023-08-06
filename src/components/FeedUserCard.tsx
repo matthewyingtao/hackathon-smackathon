@@ -2,12 +2,14 @@ import { User } from "@/stores/user";
 import { displayFellowships } from "@/utils";
 import { Link } from "wouter";
 import UserPicture from "./UserPicture";
+import UserStatus from "./UserStatus";
 
 interface FeedUserCardProps {
   user: User;
 }
 
 const FeedUserCard: React.FC<FeedUserCardProps> = ({ user }) => {
+  const openTo = user.openTo[0];
   return (
     <Link href={`/user/${user.id}`}>
       <a className="card w-full bg-sandstone shadow-xl hidden lg:block lg:col-span-3">
@@ -17,6 +19,8 @@ const FeedUserCard: React.FC<FeedUserCardProps> = ({ user }) => {
             alt={`Cover image for ${user.name}`}
             className="w-full"
           />
+
+          <UserStatus openTo={openTo} size="80px" />
         </figure>
 
         <div className="absolute top-6 left-1/2 -translate-x-1/2 w-32">
