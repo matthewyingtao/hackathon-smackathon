@@ -1,4 +1,5 @@
 import maCover from "@/assets/images/ma-cover.jpg";
+import Foog from "@/assets/images/pfps/foog.jpg";
 import Jean from "@/assets/images/pfps/jean.jpg";
 import KH4 from "@/assets/images/pfps/kh4.jpg";
 import Louis from "@/assets/images/pfps/louis.jpg";
@@ -201,6 +202,21 @@ export const users: User[] = [
     openTo: [UserOpenTo.WORK, UserOpenTo.MARRIAGE],
     socialClass: UserSocialClass.UPPER,
     role: UserUpperClassRole.NOBLE,
+    followingGuildIds: [],
+  },
+  {
+    id: "10",
+    name: "Lord Foog the 2st",
+    immediateFamily: [],
+    occupation: "Gentleman and Philanthropist",
+    isMale: true,
+    profileImage: await toDataUrl(Foog),
+    coverImage: await toDataUrl(maCover),
+    marriageRequestIds: [],
+    bio: "Greetings, dear connections! I am Lord Foog the 2st, a distinguished gentleman and philanthropist of the Victorian era. My paws have graciously walked through the corridors of nobility and my heart beats for the betterment of society. As a passionate advocate for animal welfare, I strive to create a world where all creatures, great and small, are treated with kindness and compassion. My impeccable taste in fashion and manners, coupled with my warm disposition, have endeared me to both humans and fellow canines alike. Join me in my quest for a more refined and caring society!",
+    openTo: [UserOpenTo.WORK, UserOpenTo.MARRIAGE, UserOpenTo.MISTRESS],
+    socialClass: UserSocialClass.UPPER,
+    role: UserUpperClassRole.CLERGY,
     followingGuildIds: [],
   },
 ];
