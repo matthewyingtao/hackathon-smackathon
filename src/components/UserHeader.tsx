@@ -46,13 +46,10 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
       $currentUserId.get()!,
     ]);
     setFamilyUserIds(tempFamilyUserIds);
-    console.log(familyUserIds);
     return;
   };
 
   const openTo = user.openTo[0];
-
-  console.log(user, openTo);
 
   return (
     <>
