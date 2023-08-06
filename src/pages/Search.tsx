@@ -5,6 +5,7 @@ import { fadeUpAnim } from "@/utils";
 import { searchPosts, searchUser } from "@/utils/search";
 import { useStore } from "@nanostores/react";
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 
 const Search: React.FC = () => {
   const query = useStore($search);
@@ -27,7 +28,11 @@ const Search: React.FC = () => {
       </div>
       <div className="space-y-8 flex-[2_1_25ch]">
         {matchedUsers.map(({ item }) => (
-          <UserHeader user={item} />
+          <Link href={`/user/${item.id}`}>
+            <a href="">
+              <UserHeader user={item} />
+            </a>
+          </Link>
         ))}
       </div>
     </motion.div>
