@@ -19,6 +19,8 @@ const FeedGuildsSidebar: React.FC = () => {
   return (
     <div className="card w-full bg-another-colour-name shadow-xl hidden lg:block lg:col-span-3">
       <div className="card-body p-3">
+        <h2 className="card-title font-accent text-4xl">Guilds You May Like</h2>
+
         {randomGuilds.map((guild) => {
           const isFollowing = currentUser.followingGuildIds.includes(guild.id);
 
