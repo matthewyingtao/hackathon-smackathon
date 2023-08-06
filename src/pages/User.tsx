@@ -68,6 +68,7 @@ const User: React.FC<UserProps> = ({ userId }) => {
       </div>
 
       <ManageMyWomanModal
+        user={user}
         show={showManageMyWomanModal}
         setShow={setShowManageMyWomanModal}
       />
