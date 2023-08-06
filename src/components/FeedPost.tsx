@@ -2,7 +2,7 @@ import { Post } from "@/stores/posts";
 import { getUser } from "@/stores/user";
 import ReactMarkdown from "react-markdown";
 import { Link } from "wouter";
-import UserPicture from "../data/UserPicture";
+import UserPicture from "./UserPicture";
 
 interface FeedPostProps {
   post: Post;

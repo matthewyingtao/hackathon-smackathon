@@ -1,7 +1,7 @@
 import { User } from "@/stores/user";
 import { displayFellowships } from "@/utils";
 import { Link } from "wouter";
-import UserPicture from "../data/UserPicture";
+import UserPicture from "./UserPicture";
 
 interface FeedUserCardProps {
   user: User;

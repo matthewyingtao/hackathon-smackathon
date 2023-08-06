@@ -35,15 +35,25 @@ const CallModal: React.FC<CallModalProps> = ({ show, setShow }) => {
           Visual Rendezvous
         </h2>
 
-        {show && (
-          <iframe
-            src="https://talky.io/hackathon-smackathon"
-            width="100%"
-            height="600px"
-            allow="camera *;microphone *"
-            className="rounded-lg"
-          ></iframe>
-        )}
+        <div
+          className="relative overflow-hidden mx-auto"
+          style={{
+            height: "600px",
+            width: "calc(100% - 220px)",
+          }}
+        >
+          {show && (
+            <iframe
+              src="https://talky.io/hackathon-smackathon"
+              height="600px"
+              allow="camera *;microphone *;fullscreen"
+              className="rounded-lg absolute left-[-220px]"
+              style={{
+                width: "calc(100% + 220px)",
+              }}
+            ></iframe>
+          )}
+        </div>
 
         <div className="modal-action">
           <button className="btn" onClick={() => setShow(false)}>

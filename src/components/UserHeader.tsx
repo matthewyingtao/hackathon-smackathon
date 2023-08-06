@@ -9,6 +9,7 @@ import { displayFellowships } from "@/utils";
 import { useStore } from "@nanostores/react";
 import CallModal from "./CallModal";
 import { useState } from "react";
+import { FaPlus, FaUserGroup } from "react-icons/fa6";
 
 interface UserHeaderProps {
   user: User;
@@ -74,9 +75,7 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
             <h2 className="card-title font-display text-bold text-3xl">
               {user.name}
             </h2>
-            <span>
-              Queen consort of King Louis XVI @ France | Ex-Archduchess
-            </span>
+            <span>{user.occupation}</span>
           </div>
           <div className="mb-4">
             <div className="font-display text-2xl">
@@ -124,11 +123,13 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
                 <button className="btn">You are Family!</button>
               ) : (
                 <button className="btn" onClick={handleConnectAsFamily}>
+                  <FaPlus />
                   Connect as Family
                 </button>
               )}
 
               <button className="btn" onClick={() => setShowCallModal(true)}>
+                <FaUserGroup />
                 Visual Rendezvous
               </button>
             </div>

@@ -3,7 +3,7 @@ import { $currentUserId, updateUser, useUser } from "@/stores/user";
 import { useStore } from "@nanostores/react";
 import { FaPlus } from "react-icons/fa6";
 import { Link } from "wouter";
-import UserPicture from "../data/UserPicture";
+import UserPicture from "./UserPicture";
 
 const FeedGuildsSidebar: React.FC = () => {
   const currentUserId = useStore($currentUserId)!;

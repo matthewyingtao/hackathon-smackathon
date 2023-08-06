@@ -6,7 +6,7 @@ import { PropsWithChildren } from "react";
 import { FaBars, FaMagnifyingGlass } from "react-icons/fa6";
 import { Link } from "wouter";
 import { navigate } from "wouter/use-location";
-import UserPicture from "../data/UserPicture";
+import UserPicture from "./UserPicture";
 
 const Navbar: React.FC<PropsWithChildren> = ({ children }) => {
   const searchVal = useStore($search);

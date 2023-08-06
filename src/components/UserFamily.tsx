@@ -5,7 +5,7 @@ import {
 } from "@/stores/user";
 import { Fragment } from "react";
 import { Link } from "wouter";
-import UserPicture from "../data/UserPicture";
+import UserPicture from "./UserPicture";
 
 interface UserFamilyProps {
   user: User;
