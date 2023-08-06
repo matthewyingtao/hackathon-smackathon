@@ -24,6 +24,8 @@ const DaughterDashboardModal: React.FC<ManageMyWomanModalProps> = ({
   const ref = useRef<HTMLDialogElement>(null);
   const users = useStore($users);
 
+  console.log(show);
+
   useEffect(() => {
     if (ref.current === null) return;
     if (show) {
@@ -55,7 +57,7 @@ const DaughterDashboardModal: React.FC<ManageMyWomanModalProps> = ({
           Dashboard™
         </h2>
 
-        <button className="btn btn-block" onClick={() => setShow(false)}>
+        <button className="btn btn-block">
           <FaBinoculars />
           View DMs
         </button>
@@ -81,7 +83,7 @@ const DaughterDashboardModal: React.FC<ManageMyWomanModalProps> = ({
                   onClick={() => setShow(false)}
                 >
                   <a className="card w-full bg-sandstone p-3 flex-row">
-                    <div className="w-12 h-12 mr-4">
+                    <div className="w-12 h-12 mr-4 shrink-0">
                       <UserPicture
                         profileImage={u.profileImage}
                         name={u.name}
@@ -89,13 +91,14 @@ const DaughterDashboardModal: React.FC<ManageMyWomanModalProps> = ({
                       />
                     </div>
 
-                    <div>
+                    <div className="shrink min-w-0 overflow-hidden">
                       <div className="mb-2">{u.name}</div>
 
                       <button
-                        className="btn btn-xs"
+                        className="btn btn-xs max-w-full"
                         onClick={(e) => {
                           e.preventDefault();
+                          e.stopPropagation();
 
                           if (user.marriageRequestIds.includes(u.id)) {
                             updateUser(user.id, {
@@ -114,12 +117,16 @@ const DaughterDashboardModal: React.FC<ManageMyWomanModalProps> = ({
                         }}
                       >
                         {user.marriageRequestIds.includes(u.id) ? (
-                          "Marriage request sent"
+                          <span className="whitespace-nowrap text-ellipsis overflow-hidden max-w-full block">
+                            Marriage request sent
+                          </span>
                         ) : (
-                          <>
-                            <FaHeart />
-                            Send marriage request
-                          </>
+                          <span className="flex justify-start max-w-full">
+                            <FaHeart className="mr-2" />
+                            <span className="whitespace-nowrap text-ellipsis overflow-hidden max-w-full block">
+                              Send marriage request
+                            </span>
+                          </span>
                         )}
                       </button>
                     </div>
