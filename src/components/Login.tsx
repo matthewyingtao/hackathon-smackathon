@@ -1,5 +1,6 @@
 import { $users, getUser } from "@/stores/user";
 import { useStore } from "@nanostores/react";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import LoginConfirmationModal from "./LoginConfirmationModal";
 
@@ -12,7 +13,12 @@ export const Login: React.FC = () => {
   return (
     <>
       <div className="min-h-screen justify-center items-center flex p-3">
-        <div className="card bg-sandstone shadow-xl w-96 max-w-full grow-0">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, type: "spring", bounce: 0 }}
+          className="card bg-sandstone shadow-xl w-96 max-w-full grow-0"
+        >
           <div className="card-body">
             <h2 className="card-title font-accent text-4xl">Login</h2>
 
@@ -38,7 +44,7 @@ export const Login: React.FC = () => {
               Login
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {selectedUser && (

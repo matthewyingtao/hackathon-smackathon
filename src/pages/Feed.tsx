@@ -1,10 +1,12 @@
+import FeedGuildsSidebar from "@/components/FeedGuildsSidebar";
+import FeedPost from "@/components/FeedPost";
 import FeedUserCard from "@/components/FeedUserCard";
 import FeedWrite from "@/components/FeedWrite";
-import FeedPost from "@/components/FeedPost";
 import { $posts } from "@/stores/posts";
 import { $currentUserId, $users } from "@/stores/user";
+import { fadeUpAnim } from "@/utils";
 import { useStore } from "@nanostores/react";
-import FeedGuildsSidebar from "@/components/FeedGuildsSidebar";
+import { motion } from "framer-motion";
 
 const Feed: React.FC = () => {
   const currentUserId = useStore($currentUserId)!;
@@ -13,7 +15,13 @@ const Feed: React.FC = () => {
   const posts = useStore($posts);
 
   return (
-    <div className="container mx-auto p-3 grid gap-x-3 grid-cols-12 items-start">
+    <motion.div
+      variants={fadeUpAnim}
+      initial="initial"
+      animate="animate"
+      transition={{ duration: 1, type: "spring", bounce: 0 }}
+      className="container mx-auto p-3 grid gap-x-3 grid-cols-12 items-start"
+    >
       <FeedUserCard user={currentUser} />
 
       <div className="col-span-12 lg:col-span-6 space-y-2">
@@ -25,7 +33,7 @@ const Feed: React.FC = () => {
       </div>
 
       <FeedGuildsSidebar />
-    </div>
+    </motion.div>
   );
 };
 

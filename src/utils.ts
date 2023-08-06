@@ -1,3 +1,4 @@
+import { Variants } from "framer-motion";
 import { User } from "./stores/user";
 
 export const toDataUrl = async (url: string): Promise<string> => {
@@ -18,3 +19,14 @@ export const displayFellowships = (user: User) =>
   parseInt(user.immediateFamily.length.toPrecision(1))
     ? " fellowships"
     : "+ fellowships");
+
+export const fadeUpAnim: Variants = {
+  initial: {
+    opacity: 0,
+    y: 50,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+  },
+};

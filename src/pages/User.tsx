@@ -1,16 +1,18 @@
-import UserHeader from "@/components/UserHeader";
-import UserFamily from "@/components/UserFamily";
+import DaughterDashboardModal from "@/components/DaughterDashboardModal";
 import UserBio from "@/components/UserBio";
+import UserFamily from "@/components/UserFamily";
+import UserHeader from "@/components/UserHeader";
 import {
   $currentUserId,
   UserImmediateFamilyRelationshipEnum,
   getUser,
   useUser,
 } from "@/stores/user";
-import { FaInfo, FaArrowRight } from "react-icons/fa6";
-import { useState } from "react";
-import DaughterDashboardModal from "@/components/DaughterDashboardModal";
+import { fadeUpAnim } from "@/utils";
 import { useStore } from "@nanostores/react";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { FaArrowRight, FaInfo } from "react-icons/fa6";
 
 interface UserProps {
   userId: string;
@@ -40,7 +42,13 @@ const User: React.FC<UserProps> = ({ userId }) => {
 
   return (
     <>
-      <div className="container mx-auto p-3 grid gap-x-3 gap-y-2 grid-cols-12">
+      <motion.div
+        variants={fadeUpAnim}
+        initial="initial"
+        animate="animate"
+        transition={{ duration: 1, type: "spring", bounce: 0 }}
+        className="container mx-auto p-3 grid gap-x-3 gap-y-2 grid-cols-12"
+      >
         <div className="col-span-12 lg:col-span-8">
           <UserHeader user={user} />
 
@@ -64,7 +72,7 @@ const User: React.FC<UserProps> = ({ userId }) => {
         <UserFamily user={user} />
 
         <UserBio user={user} />
-      </div>
+      </motion.div>
 
       <DaughterDashboardModal
         user={user}
