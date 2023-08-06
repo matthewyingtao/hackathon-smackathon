@@ -133,7 +133,7 @@ export const users: User[] = [
       },
     ],
     occupation: "Prince @ France",
-    isMale: false,
+    isMale: true,
     profileImage: await toDataUrl(Jean),
     coverImage: await toDataUrl(maCover),
     bio: "Jean Amilcar is the adopted son of King Louis XVI and Queen Marie Antoinette of France. Jean Amilcar was from French Senegal. He was enslaved as a child and then bought from local slavers by the French official Chevalier de Boufflers, who wished to spare him the deadly transatlantic crossing. ",

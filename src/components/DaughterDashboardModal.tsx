@@ -2,6 +2,7 @@ import {
   $users,
   User,
   UserImmediateFamilyRelationshipEnum,
+  updateUser,
 } from "@/stores/user";
 import { useStore } from "@nanostores/react";
 import { useEffect, useRef } from "react";
@@ -15,7 +16,7 @@ interface ManageMyWomanModalProps {
   setShow: (show: boolean) => void;
 }
 
-const ManageMyWomanModal: React.FC<ManageMyWomanModalProps> = ({
+const DaughterDashboardModal: React.FC<ManageMyWomanModalProps> = ({
   user,
   show,
   setShow,
@@ -45,7 +46,13 @@ const ManageMyWomanModal: React.FC<ManageMyWomanModalProps> = ({
         }}
       >
         <h2 className="card-title font-accent text-5xl mb-3">
-          ManageMyWoman™
+          {user.immediateFamily.some(
+            (u) =>
+              u.relationship === UserImmediateFamilyRelationshipEnum.SPOUSE,
+          )
+            ? "Wife"
+            : "Daughter"}
+          Dashboard™
         </h2>
 
         <button className="btn btn-block" onClick={() => setShow(false)}>
@@ -68,7 +75,11 @@ const ManageMyWomanModal: React.FC<ManageMyWomanModalProps> = ({
                   !u.immediateFamily.some((f) => f.userId === user.id),
               )
               .map((u) => (
-                <Link href={`/user/${user.id}`} key={u.id}>
+                <Link
+                  href={`/user/${u.id}`}
+                  key={u.id}
+                  onClick={() => setShow(false)}
+                >
                   <a className="card w-full bg-sandstone p-3 flex-row">
                     <div className="w-12 h-12 mr-4">
                       <UserPicture
@@ -85,6 +96,21 @@ const ManageMyWomanModal: React.FC<ManageMyWomanModalProps> = ({
                         className="btn btn-xs"
                         onClick={(e) => {
                           e.preventDefault();
+
+                          if (user.marriageRequestIds.includes(u.id)) {
+                            updateUser(user.id, {
+                              marriageRequestIds:
+                                user.marriageRequestIds.filter(
+                                  (id) => id !== u.id,
+                                ),
+                            });
+                          } else
+                            updateUser(user.id, {
+                              marriageRequestIds: [
+                                ...user.marriageRequestIds,
+                                u.id,
+                              ],
+                            });
                         }}
                       >
                         {user.marriageRequestIds.includes(u.id) ? (
@@ -114,4 +140,4 @@ const ManageMyWomanModal: React.FC<ManageMyWomanModalProps> = ({
   );
 };
 
-export default ManageMyWomanModal;
+export default DaughterDashboardModal;
