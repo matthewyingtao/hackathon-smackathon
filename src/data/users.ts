@@ -1,4 +1,5 @@
 import maCover from "@/assets/images/ma-cover.jpg";
+import defaultBanner from "@/assets/images/default_banner.png";
 import Foog from "@/assets/images/pfps/foog.jpg";
 import Jean from "@/assets/images/pfps/jean.jpg";
 import KH4 from "@/assets/images/pfps/kh4.jpg";
@@ -8,6 +9,7 @@ import Marie from "@/assets/images/pfps/marie.jpg";
 import Victoria from "@/assets/images/pfps/victoria.jpg";
 import Shakespeare from "@/assets/images/pfps/shakespeare.jpg";
 import Ada from "@/assets/images/pfps/ada.jpg";
+import AdaBanner from "@/assets/images/ada-banner.jpg";
 import Dicken from "@/assets/images/pfps/dicken.jpg";
 import {
   User,
@@ -55,7 +57,7 @@ export const users: User[] = [
     occupation: "King @ England",
     isMale: true,
     profileImage: await toDataUrl(KH4),
-    coverImage: await toDataUrl(maCover),
+    coverImage: await toDataUrl(defaultBanner),
     bio: "I'm a king, but I'm also a simp.",
     marriageRequestIds: [],
     socialClass: UserSocialClass.UPPER,
@@ -83,7 +85,7 @@ export const users: User[] = [
     occupation: "King @ France",
     isMale: true,
     profileImage: await toDataUrl(Louis),
-    coverImage: await toDataUrl(maCover),
+    coverImage: await toDataUrl(defaultBanner),
     bio: "Bow down to me, peasants!",
     marriageRequestIds: [],
     openTo: [UserOpenTo.MISTRESS],
@@ -111,7 +113,7 @@ export const users: User[] = [
     occupation: "Queen @ France",
     isMale: false,
     profileImage: await toDataUrl(Marie),
-    coverImage: await toDataUrl(maCover),
+    coverImage: await toDataUrl(defaultBanner),
     bio: "Marie-Thérèse Charlotte is the eldest child of King Louis XVI and Queen Marie Antoinette of France. In 1799 she married her cousin Louis Antoine, Duke of Angoulême, the eldest son of Charles, Count of Artois, henceforth becoming the Duchess of Angoulême. She was briefly Queen of France in 1830.",
     marriageRequestIds: [],
     openTo: [],
@@ -139,7 +141,7 @@ export const users: User[] = [
     occupation: "Prince @ France",
     isMale: true,
     profileImage: await toDataUrl(Jean),
-    coverImage: await toDataUrl(maCover),
+    coverImage: await toDataUrl(defaultBanner),
     bio: "Jean Amilcar is the adopted son of King Louis XVI and Queen Marie Antoinette of France. Jean Amilcar was from French Senegal. He was enslaved as a child and then bought from local slavers by the French official Chevalier de Boufflers, who wished to spare him the deadly transatlantic crossing. ",
     marriageRequestIds: [],
     openTo: [],
@@ -154,7 +156,7 @@ export const users: User[] = [
     occupation: "Queen @ England",
     isMale: false,
     profileImage: await toDataUrl(Victoria),
-    coverImage: await toDataUrl(maCover),
+    coverImage: await toDataUrl(defaultBanner),
     bio: "Victoria is Queen of the United Kingdom of Great Britain and Ireland. Her reign will be longer than that of any of her predecessors. It was a period of industrial, political, scientific, and military change within the United Kingdom, and was marked by a great expansion of the British Empire.",
     marriageRequestIds: [],
     openTo: [],
@@ -169,7 +171,7 @@ export const users: User[] = [
     occupation: "Playwright and Poet @ England",
     isMale: true,
     profileImage: await toDataUrl(Shakespeare),
-    coverImage: await toDataUrl(maCover),
+    coverImage: await toDataUrl(defaultBanner),
     bio: "I am William Shakespeare, the greatest playwright and poet in English literature. My works, including plays like Romeo and Juliet, Hamlet, and Macbeth, have left a lasting impact on the world of literature and theater. Join me in exploring the beauty and power of words!",
     marriageRequestIds: [],
     openTo: [UserOpenTo.WORK],
@@ -184,7 +186,7 @@ export const users: User[] = [
     occupation: "Mathematician and Writer @ England",
     isMale: false,
     profileImage: await toDataUrl(Ada),
-    coverImage: await toDataUrl(maCover),
+    coverImage: await toDataUrl(AdaBanner),
     bio: "I am Ada Lovelace, a mathematician and writer. I am known for my work on Charles Babbage's early mechanical general-purpose computer, the Analytical Engine. My notes on the engine include what is now recognized as the world's first algorithm intended for implementation on a machine, making me the first computer programmer.",
     marriageRequestIds: [],
     openTo: [UserOpenTo.WORK, UserOpenTo.MARRIAGE],
@@ -199,7 +201,7 @@ export const users: User[] = [
     occupation: "Novelist @ England",
     isMale: true,
     profileImage: await toDataUrl(Dicken),
-    coverImage: await toDataUrl(maCover),
+    coverImage: await toDataUrl(defaultBanner),
     bio: "I am Charles Dickens, a renowned novelist known for my works such as 'Oliver Twist,' 'A Tale of Two Cities,' and 'Great Expectations.' My writings shed light on social issues and inequalities of the Victorian era. Connect with me to delve into the world of vivid characters and intricate plots.",
     marriageRequestIds: [],
     openTo: [UserOpenTo.WORK, UserOpenTo.MARRIAGE],
@@ -214,7 +216,7 @@ export const users: User[] = [
     occupation: "Gentleman and Philanthropist",
     isMale: true,
     profileImage: await toDataUrl(Foog),
-    coverImage: await toDataUrl(maCover),
+    coverImage: await toDataUrl(defaultBanner),
     marriageRequestIds: [],
     bio: "Greetings, dear connections! I am Lord Foog the 2st, a distinguished gentleman and philanthropist of the Victorian era. My paws have graciously walked through the corridors of nobility and my heart beats for the betterment of society. As a passionate advocate for animal welfare, I strive to create a world where all creatures, great and small, are treated with kindness and compassion. My impeccable taste in fashion and manners, coupled with my warm disposition, have endeared me to both humans and fellow canines alike. Join me in my quest for a more refined and caring society!",
     openTo: [UserOpenTo.WORK, UserOpenTo.MARRIAGE, UserOpenTo.MISTRESS],
