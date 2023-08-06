@@ -2,10 +2,16 @@ import { posts } from "@/data/posts";
 import { users } from "@/data/users";
 import Fuse from "fuse.js";
 
-export const searchPosts = new Fuse(posts, {
-  keys: ["title", "body"],
+const postsWithUsers = posts.map((post) => {
+  return { ...post, name: users.find((user) => user.id === post.userId)?.name };
+});
+
+export const searchPosts = new Fuse(postsWithUsers, {
+  keys: ["title", "body", "name"],
+  threshold: 0.1,
 });
 
 export const searchUser = new Fuse(users, {
   keys: ["name"],
+  threshold: 0.0,
 });
