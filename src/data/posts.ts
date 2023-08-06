@@ -32,4 +32,11 @@ export const posts: Post[] = [
     body: "As a monarch who has witnessed the trials and tribulations of my time, I cannot help but reflect on the profound impact of war. The pages of history are filled with tales of battles won and lost, of alliances forged and broken. War, a force that has shaped nations and destinies, has often been the crucible through which empires are tested and societies evolve.\n\nIn my reign, I have seen the harrowing consequences of conflict and the indomitable spirit of my people. War has taught me the importance of diplomacy, empathy, and seeking peaceful resolutions. I have sought to promote stability and prosperity for my subjects, for the strength of a nation lies not just in its military might, but in the well-being of its citizens.\n\nAs we remember those who have sacrificed their lives, it is essential to strive for a world where war becomes a distant memory. Let us embrace diplomacy and understanding, fostering cooperation between nations to create a harmonious global community. The challenges we face today can be better tackled through dialogue, mutual respect, and a shared commitment to a brighter future.\n\nMay we find wisdom in the lessons of history and work tirelessly to build a world where peace reigns supreme. #ReflectionsOnWar #Peace #History #Leadership",
     createdAt: new Date("2023-08-05T00:00:00Z"),
   },
+  {
+    id: "5",
+    userId: "10",
+    title: "Never give up on your dreams!",
+    body: "Yesterday I was walking to an interview. There was a starving dog on the road. I stopped to feed him & missed the interview. The next day I got a call asking to come in to do the interview. I was surprised, but I went. Then the interviewer came in. He was the dog",
+    createdAt: new Date("2023-08-05T00:00:00Z"),
+  },
 ];
