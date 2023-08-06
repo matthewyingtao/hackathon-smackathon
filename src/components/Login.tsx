@@ -3,6 +3,7 @@ import { useStore } from "@nanostores/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import LoginConfirmationModal from "./LoginConfirmationModal";
+import logo from "@/assets/images/logo.svg";
 
 export const Login: React.FC = () => {
   const users = useStore($users);
@@ -12,7 +13,14 @@ export const Login: React.FC = () => {
 
   return (
     <>
-      <div className="min-h-screen justify-center items-center flex p-3">
+      <div className="min-h-screen flex-col justify-center items-center flex p-3">
+        <img
+          src={logo}
+          alt="LinkedKin logo"
+          className="mb-6"
+          draggable="false"
+        />
+
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
