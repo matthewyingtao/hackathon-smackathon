@@ -141,7 +141,7 @@ const UserBio: React.FC<UserHeaderProps> = ({ user }) => {
               <div>
                 {(() => {
                   const distance: number = RunSeparationBFS(
-                    $currentUserId.get(),
+                    $currentUserId.get() as string,
                     user.id,
                   );
 
